@@ -1,0 +1,67 @@
+.example-container {
+    width: auto;
+    height: 650px;
+    
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 10%;
+    align-items: first baseline;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  .example-stepper {
+    margin-top: 8px;
+    border: 10%;
+    border-color: black;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+
+  table {
+    width: 100%;
+    
+  }
+  /* .example-full-width{
+    height: 5%;
+  } */
+
+  input[type=text], input[type=password] {
+    width: 70%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-block-color: #030303;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .demo-table {
+    width: 100%;
+  }
+  
+  .mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }

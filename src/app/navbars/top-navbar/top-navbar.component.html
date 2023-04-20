@@ -1,0 +1,19 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <!-- <app-side-navbar></app-side-navbar> -->
+     
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+    
+      <mat-toolbar color="primary">
+        <button  mat-icon-button 
+                 aria-label="Menu"
+                 (click)="drawer.toggle()"
+                >
+        <mat-icon>menu</mat-icon>
+      </button>  
+      <h3 >     Dealer Audit System</h3>
+  </mat-toolbar>
+    </div>
+  </mat-drawer-container>
