@@ -24,8 +24,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   selectedRowData: any;
   dealerss!: Dealer;
   // displayedColumns : string[] = ['studentName', 'educationInfo', 'emailId'];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
+  displayedColumns: string[]b = ['position', 'name', 'weight', 'symbol'];
+   : string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
   dataSource!: MatTableDataSource<Dealer>;
   // dealarCode!: number;
   // businessCenter!: number;
