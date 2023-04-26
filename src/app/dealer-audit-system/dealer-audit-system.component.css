@@ -65,3 +65,16 @@
   .demo-row-is-clicked {
     font-weight: bold;
   }
+
+
+
+  .container {
+    width: 2000px;
+    height: auto;
+    /* width: auto;
+    height: auto; */
+    background-color: #ffffff; /* Set the background color of the container */
+    border: 1px solid #000; /* Set the border of the container */
+    padding: 20px; /* Set the padding inside the container */
+    margin: 0 auto; /* Center the container horizontally */
+  }
