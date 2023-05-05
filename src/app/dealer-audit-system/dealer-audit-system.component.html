@@ -313,80 +313,46 @@
         </mat-step>
         <mat-step [stepControl]="thirdFormGroup" label="3.Assign Auditation">
           <form >
-            <div class="container">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
               
-
-
-
-           
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                  </ng-container>
               
-            <br>
-          <form >
-            
-              <table class="example-full-width" cellspacing="0"><tr>
-                <td> <label for="audittype"><b>Audit Type</b></label>
-                    <br>
-                    <input type="text" placeholder="Select Audit Type" name="Date Assigned" required></td>
-                    <td> <label for="Date Assigned"><b>Date Assigned</b></label>
-                        <br>
-                        <input type="text" placeholder="" name="reason" required></td>
-                        <td> <label for="auditselected"><b>Reason Audit was Selected</b></label>
-                            <br>
-                            <input type="text" placeholder="Select Audit Reason" name="email" required></td>
-               
-              </tr></table>
-              <table class="example-full-width" cellspacing="0"><tr>
-                <td> <label for="reportlanguage"><b>Reports Language</b></label>
-                    <br>
-                    <input type="text" placeholder="" name="No of Months Data" required></td>
-                    <td> <label for="noofmonthsdata"><b>No of Months Data </b></label>
-                        <br>
-                        <input type="text" placeholder="" name="statelegallimitation" required></td>
-                        <td> <label for="statelegallimitation"><b>State Legal Limitation</b></label>
-                            <br>
-                            <input type="text" placeholder="State Legal Limitation" name="email" required></td>
-
-
-
-               
-
-              </tr></table>
-              <table class="example-full-width" cellspacing="0"><tr>
-
-                <!-- <td> <label for="email"><b>Sales Group Size</b></label> -->
-                  
-                    <!-- <input type="text" placeholder="" name="Dealer Code" required></td> -->
-                    <td> <label for="Dealer Code"><b>Comments </b></label>
-                        <br>
-                        <input type="text" placeholder="" name="email" required>
-                        
-              </tr></table> <br/>
-
-          </form>
-          <mat-toolbar color="primary">
-            <h3>Auditor</h3>
-        </mat-toolbar>
-        <br>
-        <mat-form-field appearance="fill">
-          <mat-label>Search countries by name</mat-label>
-          <input matInput >
-          <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field>
-        <ol>
-          <li>
-            <button mat-raised-button >Pick one</button>
-          </li>
-        
-        </ol>
-
-        </div>
-
-  
-
-         
-
-
-      
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  </ng-container>
+              
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef> Weight </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                  </ng-container>
+              
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                               showFirstLastButtons
+                               aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
           </form>
         </mat-step>
         <mat-step [stepControl]="thirdFormGroup" label="4.Review and Submit">

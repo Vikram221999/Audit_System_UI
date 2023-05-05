@@ -23,20 +23,10 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
-  // displayedColumns : string[] = ['studentName', 'educationInfo', 'emailId'];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
   dataSource!: MatTableDataSource<Dealer>;
-  // dealarCode!: number;
-  // businessCenter!: number;
-  // dealerName!: string;
-  // State!: string;
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
-  // onRowClicked(rowData: any) {
-  //   this.selectedRowData = rowData;
-   
-  // }
+ 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
