@@ -20,6 +20,9 @@ import { Router } from '@angular/router';
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
 
+dealerId !:number;
+
+
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
@@ -52,13 +55,30 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     );
   }
 
+  getSingleDealer(){
+    this.dealerService.getSingleDealer().subscribe(
+      (data) => {
+        console.log(data);
+      }
+    )
+  }
+
   ngAfterViewInit() {
     
   }
-  onRowClicked(rowData: any) {
-    this.selectedRowData = rowData;
-    this.router.navigate(['/next-stepper'], { state: { data: this.selectedRowData } });
+
+  onRowClicked(row: any) {
+    console.log('Row clicked: ', row);
+this.dealerId=row.dealerCode;
+console.log(this.dealerId);
+
   }
+  // onRowClicked(rowData: any) {
+  //   this.selectedRowData = rowData;
+  //   this.router.navigate(['/next-stepper'], { state: { data: this.selectedRowData } });
+  // }
+
+
 
   showFiller = false;
 

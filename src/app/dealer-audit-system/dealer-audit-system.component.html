@@ -44,64 +44,28 @@
                   <th mat-header-cell *matHeaderCellDef>Dealer State</th>
                   <td mat-cell *matCellDef="let element">{{element.address.state}}</td>
                 </ng-container>
-              
+               <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+                <mat-row *matRowDef="let user; columns: displayedColumns1" (click)="onRowClicked(user)"></mat-row> -->
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-                <!-- <mat-cell *matCellDef="let row" (click)="onRowClicked(row)"> {{row.name}} </mat-cell> -->
-                <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
-                <tr
+               <tr
                     mat-row
-                    (click)="clickedRows.add(row)"
-                    [class.demo-row-is-clicked]="clickedRows.has(row)"
                     *matRowDef="let row; columns: displayedColumns1;"
+                    (click)="onRowClicked(row)"
+                    
+                    
                 ></tr>
               </table>
+
+              <!-- [class.demo-row-is-clicked]="clickedRows.has(row)"
+                    *matRowDef="let row; columns: displayedColumns1;" -->
               
-              <!-- <div>
-                <h3>
-                  Click Log
-                </h3>
-              </div> -->
+
               
-              <div *ngIf="!clickedRows.size">
-                Clicked rows will be logged here
-              </div>
-              
-              <ul>
-                <li *ngFor="let clickedRow of clickedRows">
-                  Clicked on {{clickedRow.name}}
-                </li>
-              </ul>
+    
 
 
-
-
-
-                <!-- <table mat-table [dataSource]="dataSource">
-              
-                  <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.dealerCode}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.businessCenter}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element"> {{element.saleGroupSize}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.address.city}} </td>
-                    
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table> -->
               
                 <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                                showFirstLastButtons
@@ -128,16 +92,7 @@
                         <td> <label for="email"><b>Dealer Name</b></label>
                             <br>
                             <input type="text" placeholder="" name="email" required></td>
-                <!-- <td><mat-label>Dealer Code</mat-label>
-                    <br>
-                    <mat-form-field appearance="outline">
-                        <input  matInput placeholder="72">              
-                      </mat-form-field></td>
-                      <td> <mat-label>Dealer Name</mat-label>
-                        <br>
-                        <mat-form-field appearance="outline">
-                            <input  matInput placeholder="72">              
-                          </mat-form-field></td>     -->
+
               </tr></table>
               <table class="example-full-width" cellspacing="0"><tr>
                 <td> <label for="email"><b>DBA</b></label>
@@ -150,24 +105,6 @@
                             <br>
                             <input type="text" placeholder="" name="email" required></td>
 
-
-
-                <!-- <td> <mat-label>DBA</mat-label>
-                    <br>
-                    <mat-form-field appearance="outline">
-                        <input  matInput placeholder="72">              
-                      </mat-form-field></td>
-                <td><mat-label>Dealer Principal</mat-label>
-                    <br>
-                    <mat-form-field appearance="outline">
-                        <input  matInput placeholder="72">              
-                      </mat-form-field></td>
-                      <td> <mat-label>Dealar Name for Letter Greeting</mat-label>
-                        <br>
-                        <mat-form-field appearance="outline">
-                            <input  matInput placeholder="72">              
-                          </mat-form-field></td>     -->
-
               </tr></table>
               <table class="example-full-width" cellspacing="0"><tr>
 
@@ -177,30 +114,10 @@
                     <td> <label for="Dealer Code"><b>Inception Date </b></label>
                         <br>
                         <input type="text" placeholder="" name="email" required>
-                        <!-- <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker></td> -->
                        
-             
-                <!-- <td><mat-label>Sales Group Size</mat-label>
-                    <br>
-                    <mat-form-field appearance="outline">
-                        <input  matInput placeholder="72">              
-                      </mat-form-field></td>
-                      <td> <mat-label>Inception Date</mat-label>
-                        <br>
-                        <mat-form-field appearance="outline">
-                            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-                            <mat-hint>MM/DD/YYYY</mat-hint>
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>             
-                          </mat-form-field></td>     -->
               </tr></table>
             
-            <!-- <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div> -->
+    
           </form>
 
           <mat-toolbar color="primary">
@@ -216,17 +133,6 @@
                     <br>
                     <input type="text" placeholder="" name="email" required>
                     
-                   
-            <!-- <td> <mat-label>Address Line 1</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="Address">              
-                  </mat-form-field></td>
-            <td><mat-label>State(Provine)</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="72">              
-                  </mat-form-field></td> -->
           </tr></table>
 
           <table class="example-full-width" cellspacing="0"><tr>
@@ -238,16 +144,6 @@
                     <br>
                     <input type="text" placeholder="" name="email" required>
 
-            <!-- <td> <mat-label>Address Line 2</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="Address">              
-                  </mat-form-field></td>
-            <td><mat-label>Country</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="72">              
-                  </mat-form-field></td> -->
           </tr></table>
 
           <table class="example-full-width" cellspacing="0"><tr>
@@ -259,23 +155,9 @@
                 <td> <label for="Dealer Code"><b>ZIP </b></label>
                     <br>
                     <input type="text" placeholder="" name="email" required>
-<!-- 
-            <td> <mat-label>City</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="72">              
-                  </mat-form-field></td>
-            <td><mat-label>ZIP</mat-label>
-                <br>
-                <mat-form-field appearance="outline">
-                    <input  matInput placeholder="72">              
-                  </mat-form-field></td> -->
+
           </tr></table>
-        
-        <!-- <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div> -->
+  
       </form>
 
 
@@ -292,23 +174,8 @@
             <td> <label for="Dealer Code"><b>Dealer email </b></label>
                 <br>
                 <input type="text" placeholder="" name="email" required>
-
-        <!-- <td> <mat-label>Phone</mat-label>
-            <br>
-            <mat-form-field appearance="outline">
-                <input  matInput placeholder="72">              
-              </mat-form-field></td>
-        <td><mat-label>Dealer email</mat-label>
-            <br>
-            <mat-form-field appearance="outline">
-                <input  matInput placeholder="72">              
-              </mat-form-field></td> -->
       </tr></table>
-    
-    <!-- <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div> -->
+  
   </form>
         </mat-step>
         <mat-step [stepControl]="thirdFormGroup" label="3.Assign Auditation">
@@ -316,25 +183,25 @@
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource">
               
-                  <!-- Position Column -->
+                  
                   <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
                     <td mat-cell *matCellDef="let element"> {{element.position}} </td>
                   </ng-container>
               
-                  <!-- Name Column -->
+                  
                   <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef> Name </th>
                     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                   </ng-container>
               
-                  <!-- Weight Column -->
+                  
                   <ng-container matColumnDef="weight">
                     <th mat-header-cell *matHeaderCellDef> Weight </th>
                     <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
                   </ng-container>
               
-                  <!-- Symbol Column -->
+                  
                   <ng-container matColumnDef="symbol">
                     <th mat-header-cell *matHeaderCellDef> Symbol </th>
                     <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
