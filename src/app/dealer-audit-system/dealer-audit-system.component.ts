@@ -28,8 +28,7 @@ dealerId !:number;
   dealerss!: Dealer;
 
   // displayedColumns : string[] = ['studentName', 'educationInfo', 'emailId'];
-  displayedColumns: string[]b = ['position', 'name', 'weight', 'symbol'];
-   : string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
+
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
