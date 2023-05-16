@@ -14,6 +14,10 @@ import { Dealer } from "./entity/dealer";
     getDealers(): Observable<Dealer[]> {
       return this.httpClient.get<Dealer[]>(this.baseURL + "/showAllDealer");
     }
+
+    getSingleDealer() :Observable<Dealer>{
+      return this.httpClient.get<Dealer>(this.baseURL + "/getDealerById");
+    } 
    
    constructor(private httpClient: HttpClient) { }
 

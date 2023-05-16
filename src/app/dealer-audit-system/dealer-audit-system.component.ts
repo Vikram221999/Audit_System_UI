@@ -20,23 +20,22 @@ import { Router } from '@angular/router';
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
 
+dealerId !:number;
+
+
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
+
   // displayedColumns : string[] = ['studentName', 'educationInfo', 'emailId'];
   displayedColumns: string[]b = ['position', 'name', 'weight', 'symbol'];
    : string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
-  dataSource!: MatTableDataSource<Dealer>;
-  // dealarCode!: number;
-  // businessCenter!: number;
-  // dealerName!: string;
-  // State!: string;
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  // onRowClicked(rowData: any) {
-  //   this.selectedRowData = rowData;
-   
-  // }
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
+
+  dataSource!: MatTableDataSource<Dealer>;
+ 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
@@ -62,13 +61,30 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     );
   }
 
+  getSingleDealer(){
+    this.dealerService.getSingleDealer().subscribe(
+      (data) => {
+        console.log(data);
+      }
+    )
+  }
+
   ngAfterViewInit() {
     
   }
-  onRowClicked(rowData: any) {
-    this.selectedRowData = rowData;
-    this.router.navigate(['/next-stepper'], { state: { data: this.selectedRowData } });
+
+  onRowClicked(row: any) {
+    console.log('Row clicked: ', row);
+this.dealerId=row.dealerCode;
+console.log(this.dealerId);
+
   }
+  // onRowClicked(rowData: any) {
+  //   this.selectedRowData = rowData;
+  //   this.router.navigate(['/next-stepper'], { state: { data: this.selectedRowData } });
+  // }
+
+
 
   showFiller = false;
 
