@@ -1,3 +1,4 @@
+
 .example-container {
     width: auto;
     height: 650px;
@@ -77,4 +78,20 @@
     border: 1px solid #000; /* Set the border of the container */
     padding: 20px; /* Set the padding inside the container */
     margin: 0 auto; /* Center the container horizontally */
+  }
+
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+
+  .dateStyle {
+    background-color: #ddd
   }

@@ -18,7 +18,26 @@ import { Router } from '@angular/router';
   templateUrl: './dealer-audit-system.component.html',
   styleUrls: ['./dealer-audit-system.component.css'],
 })
+
+
+ 
+
+
+
+
+
+
 export class DealerAuditSystemComponent implements AfterViewInit {
+
+startDate = new Date(1990, 0, 1);
+value!: string;
+viewValue!: string;
+language: String[] = [
+  "English",
+  "Tamil",
+  "Hindi",
+];
+
 
 dealerId !:number;
 
@@ -26,8 +45,10 @@ dealerId !:number;
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
+
   dataSource!: MatTableDataSource<Dealer>;
  
   myFilter = (d: Date | null): boolean => {

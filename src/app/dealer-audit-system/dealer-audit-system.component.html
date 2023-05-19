@@ -44,10 +44,7 @@
                   <th mat-header-cell *matHeaderCellDef>Dealer State</th>
                   <td mat-cell *matCellDef="let element">{{element.address.state}}</td>
                 </ng-container>
-               <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-                <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
-                <mat-row *matRowDef="let user; columns: displayedColumns1" (click)="onRowClicked(user)"></mat-row> -->
-
+             
                 <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
                <tr
                     mat-row
@@ -58,14 +55,7 @@
                 ></tr>
               </table>
 
-              <!-- [class.demo-row-is-clicked]="clickedRows.has(row)"
-                    *matRowDef="let row; columns: displayedColumns1;" -->
-              
-
-              
-    
-
-
+             
               
                 <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                                showFirstLastButtons
@@ -178,7 +168,94 @@
   
   </form>
         </mat-step>
+
+
+
         <mat-step [stepControl]="thirdFormGroup" label="3.Assign Auditation">
+   
+            <!-- <mat-toolbar color="primary">
+              <h3>DealerShip Details</h3>
+            </mat-toolbar> -->
+            <br>
+          <form >
+            
+              <table class="example-full-width" cellspacing="0"><tr>
+                <td> <label for="auditype"><b>Audit Type</b></label>
+                    <br>
+                    <input type="text" placeholder="" name="Audit Type" required></td>
+                    <td> <label for="DateAssigned"><b>Date Assigned</b></label>
+                        <br>
+                      
+                    
+                       
+                        <mat-form-field>
+                          <mat-label>Choose a date</mat-label>
+                          <input matInput [matDatepicker]="picker">
+                          <mat-hint>MM/DD/YYYY</mat-hint>
+                          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      
+                      
+                       
+                        <br>
+                        <td><label for="ReasonAuditwasSelected"><b>Reason Audit was Selected</b></label>
+                            <br>
+                            <input type="text" placeholder="" name="ReasonAuditwasSelected" required></td>
+
+              </tr></table>
+              <table class="example-full-width" cellspacing="0"><tr>
+                <td> <label for="reportsLanguage"><b>Reports Language</b></label>
+                    <br>
+                    <mat-form-field>
+                      <mat-label>Select Language</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let lang of language" >
+                          {{lang}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+                   
+                  </td>
+                    <td> <label for="NoOfMonthData"><b>No Of Month Data </b></label>
+                        <br>
+                        <input type="text" placeholder="" name="" required></td>
+                        <td> <label for="stateLegalLimitation"><b>State Legal Limitation</b></label>
+                            <br>
+                            <input type="text" placeholder="" name="" required></td>
+
+              </tr></table>
+              <table class="example-full-width" cellspacing="0"><tr>
+
+                <td> <label for="comments"><b>Comments</b></label>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Leave a comment</mat-label>
+                      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                    </mat-form-field>
+                  </td>
+                  </table>
+            
+    
+                </form>
+                
+                  <form>
+                    <mat-toolbar color="primary">
+                      <h3 style="padding-left: 15%;">Auditor</h3>
+                      <h3 style="padding-left: 55%;">Work Allocation </h3>
+
+                      <mat-drawer-container class="example-container" autosize></mat-drawer-container>
+                   
+                    </mat-toolbar>
+
+
+                  </form>
+                
+               
+        </mat-step>
+        <br>
+       
           <form >
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource">
@@ -221,7 +298,7 @@
               <button mat-button matStepperNext>Next</button>
             </div>
           </form>
-        </mat-step>
+       
         <mat-step [stepControl]="thirdFormGroup" label="4.Review and Submit">
             <form >
               <mat-form-field appearance="fill">
@@ -258,11 +335,7 @@
         </div>
     </mat-toolbar>
     
-    <!-- <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
+  
     
   </mat-drawer>
 </mat-drawer-container>
