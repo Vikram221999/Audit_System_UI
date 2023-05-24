@@ -1,14 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { AfterViewInit, Component, Injectable, ViewChild } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Observable, map } from 'rxjs';
 import { DealerService } from '../dealer.service';
 import { Dealer } from '../entity/dealer';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -18,32 +18,56 @@ import { Router } from '@angular/router';
   templateUrl: './dealer-audit-system.component.html',
   styleUrls: ['./dealer-audit-system.component.css'],
 })
+
 export class DealerAuditSystemComponent implements AfterViewInit {
 
+startDate = new Date(1990, 0, 1);
+value!: string;
+viewValue!: string;
+Dealer!:any;
+
+projectForm : any;
+language: String[] = [
+  "English",
+  "Tamil",
+  "Hindi",
+];
 dealerId !:number;
-
-
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
 
-  // displayedColumns : string[] = ['studentName', 'educationInfo', 'emailId'];
-
-
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns1: string[] = ['dealerCode', 'businessCenter', 'dealerName','state'];
-
   dataSource!: MatTableDataSource<Dealer>;
  
+  constructor(
+    private _formBuilder: FormBuilder,
+    breakpointObserver: BreakpointObserver,
+    private dealerService: DealerService,
+    private router: Router,
+  )
+  {
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+    this.getDealers();
+  }
+
+
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
     return day !== 0 && day !== 6;
   };
+ 
 
   ngOnInit(): void {
      this.getDealers();
+     this.formGroup();
   }
+
+ 
   clickedRows = new Set<any>();
   getDealers() {
     this.dealerService.getDealers().subscribe(
@@ -60,10 +84,43 @@ dealerId !:number;
     );
   }
 
+  formGroup(){
+ this.projectForm = this._formBuilder.group({
+  dealerCode:['', Validators.required],
+  dealerName:['', Validators.required],
+   businessCenter:['', Validators.required],
+   saleGroupSize:['', Validators.required],
+   phoneNumber:['', Validators.required],
+    addressLine1:['', Validators.required],
+    addressLine2:['', Validators.required],
+    state:['', Validators.required],
+    country:['', Validators.required],
+    city:['', Validators.required],
+    zicode:['', Validators.required],
+	email:['', Validators.required]
+
+     
+ 
+  });
+}
+
   getSingleDealer(){
-    this.dealerService.getSingleDealer().subscribe(
+    this.dealerService.getSingleDealer(this.dealerId).subscribe(
       (data) => {
-        console.log(data);
+        this.Dealer=data;
+        console.log( this.Dealer.address.email);
+        this.projectForm.controls['dealerCode'].setValue(data.dealerCode);
+      this.projectForm.controls['dealerName'].setValue(data.dealerName);
+      this.projectForm.controls['businessCenter'].setValue(data.businessCenter);
+      this.projectForm.controls['saleGroupSize'].setValue(data.saleGroupSize);
+      this.projectForm.controls['phoneNumber'].setValue(data.address.phoneNumber);
+       this.projectForm.controls['addressLine1'].setValue(data.address.addressLine1);
+       this.projectForm.controls['addressLine2'].setValue(data.address.addressLine2);
+      this.projectForm.controls['state'].setValue(data.address.state);
+      this.projectForm.controls['country'].setValue(data.address.country);
+       this.projectForm.controls['city'].setValue(data.address.city);
+       this.projectForm.controls['zicode'].setValue(data.address.zicode);
+       this.projectForm.controls['email'].setValue(data.address.email);
       }
     )
   }
@@ -72,18 +129,18 @@ dealerId !:number;
     
   }
 
-  onRowClicked(row: any) {
+  onRowClicked(row: any , stepper :MatStepper) {
     console.log('Row clicked: ', row);
 this.dealerId=row.dealerCode;
 console.log(this.dealerId);
+stepper.next();
+this.getSingleDealer();
 
   }
-  // onRowClicked(rowData: any) {
-  //   this.selectedRowData = rowData;
-  //   this.router.navigate(['/next-stepper'], { state: { data: this.selectedRowData } });
-  // }
 
-
+  goToNextStep(stepper: MatStepper): void {
+    stepper.next();
+  }
 
   showFiller = false;
 
@@ -99,20 +156,7 @@ console.log(this.dealerId);
   });
   stepperOrientation: Observable<StepperOrientation>;
 
-  constructor(
-    private _formBuilder: FormBuilder,
-    breakpointObserver: BreakpointObserver,
-    private dealerService: DealerService,
-    private router: Router,
-  )
   
-  
-  {
-    this.stepperOrientation = breakpointObserver
-      .observe('(min-width: 800px)')
-      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-    this.getDealers();
-  }
  
 }
 

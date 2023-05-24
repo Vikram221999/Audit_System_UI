@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from 'src/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopNavbarComponent } from './navbars/top-navbar/top-navbar.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -37,11 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialExampleModule,
     NgbModule,
-    HttpClientModule
-    
-    
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule     
+
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder
+],
   bootstrap: [AppComponent]
   
   
