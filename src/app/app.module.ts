@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopNavbarComponent } from './navbars/top-navbar/top-navbar.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SelectAuditorComponent } from './select-auditor/select-auditor.component';
 
 
 
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     DealerAuditSystemComponent,
     SideNavbarComponent,
     TopNavbarComponent,
+    SelectAuditorComponent,
     
   ],
   imports: [
