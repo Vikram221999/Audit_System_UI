@@ -8,7 +8,7 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-select-auditor',
   templateUrl: './select-auditor.component.html',
-  styleUrls: ['./select-auditor.component.css']
+  styleUrls: ['./select-auditor.component.css'],
 })
 export class SelectAuditorComponent implements OnInit {
   dealerId!: number;
@@ -50,5 +50,6 @@ export class SelectAuditorComponent implements OnInit {
       }
     );
   }
+  
 
 }
