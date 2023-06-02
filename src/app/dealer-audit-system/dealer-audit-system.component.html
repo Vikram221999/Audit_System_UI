@@ -259,7 +259,20 @@
                 <td> <label for="auditype"><b>Audit Type</b></label>
                     <br>
                     <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                      <input matInput placeholder="city.value" [formControlName]="'city'"  />
+                      <mat-select placeholder="Audit Type" disableRipple>
+                        <mat-option value="1">Sales</mat-option>
+                        <mat-option value="2">Accounts</mat-option>
+                        <mat-option value="3">Cost</mat-option>
+                        <mat-option value="4">Expertise</mat-option>
+                      </mat-select>
+                      <!-- <mat-select  placeholder="Audit Type"  [formControlName]="''" disableRipple>
+                        <mat-option value="1">Sales</mat-option>
+                        <mat-option value="2">Accounts</mat-option>
+                        <mat-option value="3">Cost</mat-option>
+                        <mat-option value="3">Expertise</mat-option>
+                      </mat-select> -->
+                  <!-- </mat-fo -->
+                      
                   </mat-form-field>
                     <!-- <input type="text" placeholder="" name="Audit Type" required> -->
                   
@@ -313,12 +326,18 @@
                 <td> <label for="reportsLanguage"><b>Reports Language</b></label>
                     <br>
                     <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline">
-                      <mat-label>Select Language</mat-label>
-                      <mat-select>
+                      <!-- <mat-label>Select Language</mat-label> -->
+                        <mat-select  placeholder="Select Language"  [formControlName]="''" disableRipple>
+                          <mat-option value="1">English</mat-option>
+                          <mat-option value="2">Tamil</mat-option>
+                          <mat-option value="3">Hindi</mat-option>
+                        </mat-select>
+                      
+                      <!-- <mat-select  placeholder="language" [formControlName]="'language'" >
                         <mat-option *ngFor="let lang of language" >
                           {{lang}}
                         </mat-option>
-                      </mat-select>
+                      </mat-select> -->
                     </mat-form-field>
                     
                    
