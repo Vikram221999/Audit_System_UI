@@ -4,7 +4,7 @@
       <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h3>Dealer Audit System</h3>
+      <h3>DEALER AUDIT SYSTEM</h3>
     </mat-toolbar>
     
   </div>
@@ -20,29 +20,29 @@
         <mat-step  [stepControl]="firstFormGroup" label="1. Select Dealer" >   
           <form >
             <br>
-            <div class="mat-elevation-z8">
+            <div class="mat-elevation-z4" color="primary" >
 
-               <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+               <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 demo-table">
                 
                 <ng-container matColumnDef="dealerCode"  >
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);" >Dealar Code</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead" >Dealar Code</th>
                   <td mat-cell *matCellDef="let element">{{element.dealerCode}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="businessCenter">
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);" >Business Center</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead">Business Center</th>
                   <td mat-cell *matCellDef="let element">{{element.businessCenter}}</td>
                 </ng-container>
               
                 
                 <ng-container matColumnDef="dealerName">
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);"> Dealer Name</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead"> Dealer Name</th>
                   <td mat-cell *matCellDef="let element">{{element.dealerName}}</td>
                 </ng-container>
               
                
                 <ng-container matColumnDef="state">
-                  <th mat-header-cell *matHeaderCellDef  style= "font-size: medium;color: rgb(59, 59, 59);">Dealer State</th>
+                  <th mat-header-cell *matHeaderCellDef  class="tablehead">Dealer State</th>
                   <td mat-cell *matCellDef="let element">{{element.address.state}}</td>
                 </ng-container>
              
@@ -66,9 +66,9 @@
         <mat-step  label="2.Dealer Information">
          
           <form [formGroup]="projectForm">
-            <div class="mat-elevation-z8"> 
+            <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;"> 
             <mat-toolbar color="primary" >
-                <h4>DealerShip Details</h4>
+                <h4>DEALERSHIP DETAILS</h4>
             </mat-toolbar>
             <br>
             
@@ -152,7 +152,7 @@
               
 
               <br>
-              <table class="example-full-width" cellspacing="2"><tr>
+              <table class="dba" cellspacing="2"><tr>
 
                 <td> <label for="email"><b>DBA</b></label>
                   <br>
@@ -168,10 +168,12 @@
           </div> 
     
           <br>
-          <div class="mat-elevation-z8">
-            <mat-toolbar color="primary">
-              <h3 style="padding-left: 15%;">Auditor</h3>
-              <h3 style="padding-left: 55%;">Work Allocation </h3>
+          <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;">
+            <mat-toolbar color="primary" >
+              
+              <h3 style="padding-left: 0%;">ADDRESS</h3>
+              <h3 style="padding-left: 69%;">CONTACT DETAILS</h3>
+              <!-- <mat-toolbar color="primary" style="width: 30%; padding-left: 15%;"></mat-toolbar> -->
         </mat-toolbar>
         <br>
       
@@ -209,7 +211,7 @@
                       <!-- <input type="text" placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" required> -->
                     </td>
           </tr></table>
-
+          <br>
           <table class="example-full-width" cellspacing="0"><tr>
 
             <td> <label for="email"><b>City</b></label>
@@ -223,21 +225,21 @@
             
             <td> <label for="Dealer Code"><b>ZIP </b></label>
               <br>
-              <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+              <mat-form-field class="small-input-field" appearance="outline">
               <input matInput placeholder="zicode.value" [formControlName]="'zicode'" />
           </mat-form-field>
               <!-- <input type="text" placeholder="zicode.value" [formControlName]="'zicode'" required> -->
 
                 <td> <label for="Dealer Code"><b>Country </b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-30 w-50 md:mr-0 sm:mr-10" appearance="outline">
+                    <mat-form-field class="small-input-field" appearance="outline">
                       <input matInput placeholder="country.value" [formControlName]="'country'" />
                   </mat-form-field>
                     <!-- <input type="text" placeholder="country.value" [formControlName]="'country'" required> -->
-
+                  
                     <td> <label for="Dealer Code"><b>Dealer email </b></label>
                       <br>
-                      <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                      <mat-form-field class="small-input-field" appearance="outline">
                         <input matInput placeholder="email.value" [formControlName]="'email'" />
                     </mat-form-field>
                     
@@ -263,24 +265,24 @@
 
         <td> <label for="email"><b>Phone</b></label>
             <br>
-            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+            <mat-form-field class="small-input-field" appearance="outline">
               <input matInput placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" />
           </mat-form-field>
             <input type="text" placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" required> -->
           <!-- </td> -->
             <!-- <td> <label for="Dealer Code"><b>Dealer email </b></label>
                 <br>
-                <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                <mat-form-field class="small-input-field" appearance="outline">
                   <input matInput placeholder="email.value" [formControlName]="'email'" />
               </mat-form-field> -->
                 <!-- <input type="text" placeholder="email.value" [formControlName]="'email'" required> -->
       <!-- </tr></table>  -->
   
     </form>
-    <div style="margin-left: 85%;">
-      <button mat-button matStepperPrevious color="primary">Back</button>
-      <button mat-button matStepperNext color="primary">Next</button>
-    </div>
+     <div class="button-container">
+    <button matStepperPrevious class="back-button">Back</button>
+    <button matStepperNext class="next-button">Next</button>
+  </div>
         </mat-step>
 
 
@@ -292,11 +294,11 @@
             </mat-toolbar> -->
             <br>
           <form  [formGroup]="projectForm">
-            
+            <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;">
               <table class="example-full-width" cellspacing="0"><tr>
                 <td> <label for="auditype"><b>Audit Type</b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                    <mat-form-field class="small-input-field" appearance="outline">
                       <input matInput placeholder="city.value" [formControlName]="'city'"  />
                   </mat-form-field>
                     <!-- <input type="text" placeholder="" name="Audit Type" required> -->
@@ -306,7 +308,7 @@
                     <br>
                     <mat-form-field 
 
-                        class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline"
+                        class="small-input-field"appearance="outline"
           >
                       <mat-label>Start Date</mat-label>
                       <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
@@ -318,7 +320,7 @@
                    </td>  -->
                     <td> <label for="DateAssigned"><b>Date Assigned</b></label>
                         <br>
-                        <mat-form-field  class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline">
+                        <mat-form-field  class="small-input-field" appearance="outline">
                       <mat-label>Start Date</mat-label>
                       <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" "[matDatepicker]="picker1" />
                       <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
@@ -328,7 +330,7 @@
                       </td>
                     
                        
-                        <!-- <mat-form-field  class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                        <!-- <mat-form-field  class="small-input-field" appearance="outline">
                           <input matInput [matDatepicker]="picker">
                           <mat-hint>MM/DD/YYYY</mat-hint>
                           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -340,17 +342,18 @@
                         <br>
                         <td><label for="ReasonAuditwasSelected"><b>Reason Audit was Selected</b></label>
                             <br>
-                            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                            <mat-form-field class="small-input-field" appearance="outline">
                               <input matInput placeholder="city.value" [formControlName]="'city'"  />
                           </mat-form-field>
                             <!-- <input type="text" placeholder="" name="ReasonAuditwasSelected" required> -->
                           </td>
 
               </tr></table>
+              <br>
               <table class="example-full-width" cellspacing="0"><tr>
                 <td> <label for="reportsLanguage"><b>Reports Language</b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline">
+                    <mat-form-field class="small-input-field" appearance="outline">
                       <mat-label>Select Language</mat-label>
                       <mat-select>
                         <mat-option *ngFor="let lang of language" >
@@ -363,7 +366,7 @@
                   </td>
                     <td> <label for="NoOfMonthData"><b>No Of Month Data </b></label>
                         <br>
-                        <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                        <mat-form-field class="small-input-field" appearance="outline">
                           <input matInput placeholder="city.value" [formControlName]="'city'"  />
                       </mat-form-field>
                        
@@ -371,13 +374,14 @@
                       </td>
                         <td> <label for="stateLegalLimitation"><b>State Legal Limitation</b></label>
                             <br>
-                            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                            <mat-form-field class="small-input-field" appearance="outline">
                               <input matInput placeholder="city.value" [formControlName]="'city'"  />
                           </mat-form-field>
                             <!-- <input type="text" placeholder="" name="" required> -->
                           </td>
 
               </tr></table>
+              <br>
               <table class="example-full-width" cellspacing="0"><tr>
 
                 <td> <label for="comments"><b>Comments</b></label>
@@ -388,10 +392,9 @@
                     </mat-form-field>
                   </td>
                   </table>
+                </div>
+                <br>
             
-    
-            
-                  
                     <mat-toolbar color="primary">
                       <h3 style="padding-left: 15%;">Auditor</h3>
                       <h3 style="padding-left: 55%;">Work Allocation </h3>
@@ -400,52 +403,102 @@
                    
                     </mat-toolbar>
 
-                    <!-- <div>
-                      <mat-form-field appearance="fill">
-                        <input type="text" matInput placeholder="Type something..">
-                        <mat-icon matSuffix>search</mat-icon>
-                    </mat-form-field>
-                  </div> -->
-
-                  <span></span>
-                  <div style="padding-left: 15%; padding-top: 5%;">
-                    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                      <!-- <mat-icon matPrefix>search</mat-icon> -->
-                      <input matInput placeholder="Lead" >
-                      <button mat-button matSuffix mat-icon-button (click)="openDialog()">
-                        <mat-icon>search</mat-icon>
-                      </button>
-                    </mat-form-field>
-                  </div>
-                    <div style="padding-left: 40%; padding-top: 5%;">
+                    <div style="padding-left: 15%; padding-top: 5%;">
                     <button  mat-raised-button color="primary" (click)="openDialog()">Add Auditor</button>
                   </div>
-                    <div class="mat-elevation-z8">
+
+
+                    <div class="mat-elevation-z4">
+
+                      <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 demo-table">
+                       
+                       <ng-container matColumnDef="dealerCode">
+                         <th mat-header-cell *matHeaderCellDef>Dealar Code</th>
+                         <td mat-cell *matCellDef="let element">{{element.dealerCode}}</td>
+                       </ng-container>
+       
+                       <ng-container matColumnDef="businessCenter">
+                         <th mat-header-cell *matHeaderCellDef>Business Center</th>
+                         <td mat-cell *matCellDef="let element">{{element.businessCenter}}</td>
+                       </ng-container>
+                     
+                       
+                       <ng-container matColumnDef="dealerName">
+                         <th mat-header-cell *matHeaderCellDef>Dealer Name</th>
+                         <td mat-cell *matCellDef="let element">{{element.dealerName}}</td>
+                       </ng-container>
+                     
+                      
+                       <ng-container matColumnDef="state">
+                         <th mat-header-cell *matHeaderCellDef>Dealer State</th>
+                         <td mat-cell *matCellDef="let element">{{element.address.state}}</td>
+                       </ng-container>
+                    
+                       <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                      <tr
+                           mat-row
+                           *matRowDef="let row; columns: displayedColumns1;"
+                           (click)="onRowClicked(row,stepper)"
+                           
+                           
+                       ></tr>
+                     </table> -->
+
+
+                    <!-- <table mat-table [dataSource]="dataSource">
+                      
+                      <ng-container matColumnDef="column1">
+                        <th mat-header-cell *matHeaderCellDef>Column 1</th>
+                        <td mat-cell *matCellDef="let item">{{ item.column1 }}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="column2">
+                        <th mat-header-cell *matHeaderCellDef>Column 2</th>
+                        <td mat-cell *matCellDef="let item">{{ item.column2 }}</td>
+                      </ng-container>
+                      
+                    
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table> -->
+                    <!-- Note: Replace column1 and column2 with your actual column names. Also, make sure to replace dataSource with your actual data source in the component file.
+                    
+                    To create the popup dialog, you can use the mat-dialog component as follows:
+                    
+                    html
+                    Copy code -->
+                    <!-- dialog.component.html -->
+                    
+                    <!-- <h1 mat-dialog-title>Add Auditor</h1> -->
                     <div mat-dialog-content>
                       <!-- Add content for your dialog -->
                     </div>
+                    <br>
                     <!-- <div mat-dialog-actions>
                       <button mat-button mat-dialog-close>Close</button>
-                    </div> -->         
-                    <!-- <h1 mat-dialog-title>Popup Dialog</h1>
-                    <div mat-dialog-content>
-                      </div>
-                    <div mat-dialog-actions>
-                      <button mat-button mat-dialog-close>Close</button>
-                    
+                      
                     </div> -->
+                    
+<!-- <h1 mat-dialog-title>Popup Dialog</h1>
+<div mat-dialog-content>
 
-                  <div class="px-2">
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
-                  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+ 
+</div> -->
+</div>
+<br>
+<div class="button-container">
+  <button matStepperPrevious class="back-button">Back</button>
+  <button matStepperNext class="next-button">Next</button>
+
                   </div>
                 </form>
         </mat-step>
         <br>
        
           <form >
-            <div class="mat-elevation-z8">
+            <div class="mat-elevation-z4">
                 <table mat-table [dataSource]="dataSource">
               
                   
@@ -481,10 +534,11 @@
                                aria-label="Select page of periodic elements">
                 </mat-paginator>
               </div>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
+              <div class="button-container">
+                <button matStepperPrevious class="back-button">Back</button>
+                <button matStepperNext class="next-button">Next</button>
+              
+                                </div>
           </form>
        
         <mat-step [stepControl]="thirdFormGroup" label="4.Review and Submit">
@@ -493,17 +547,18 @@
                 <mat-label>Phone number</mat-label>
                 <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
               </mat-form-field>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+              <div class="button-container">
+                <button matStepperPrevious class="back-button">Back</button>
+                <button matStepperNext class="next-button">Next</button>
               </div>
             </form>
           </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
+          <div class="button-container">
+            <button matStepperPrevious class="back-button">Back</button>
+            <button  class="next-button">Submit</button>
           </div>
         </mat-step>
       </mat-stepper>
