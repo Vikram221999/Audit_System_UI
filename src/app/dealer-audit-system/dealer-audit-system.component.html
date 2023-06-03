@@ -18,11 +18,75 @@
         class="example-stepper"
         [orientation]="(stepperOrientation | async)!"  #stepper >
         <mat-step  [stepControl]="firstFormGroup" label="1. Select Dealer" >   
+         
+
+
+<!--           
+          <table mat-table >
+           
+           
+          </table> -->
           <form >
+
+           
             <br>
             <div class="mat-elevation-z4" color="primary" >
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill" >
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Dealer Code" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+              
+             
+          
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill">
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Business Center" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+
+             
+         
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill">
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search By Dealer Name" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+
+             
+          
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill" >
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Dealer State" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon >sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
 
                <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 demo-table">
+                
                 
                 <ng-container matColumnDef="dealerCode"  >
                   <th mat-header-cell *matHeaderCellDef class="tablehead" >Dealar Code</th>
@@ -103,8 +167,10 @@
                             <!-- <input type="text" placeholder="dealerName.value" [formControlName]="'dealerName'" required> -->
                           </td>
                          
-                         
-              </tr></table>
+                           
+              </tr>
+            
+            </table>
               <br>
               <table class="example-full-width" cellspacing="0"><tr>
               
@@ -116,21 +182,16 @@
                           </mat-form-field>
                             <!-- <input type="text" placeholder="saleGroupSize.value" [formControlName]="'saleGroupSize'" required> -->
                           </td>
-                          <td> <label for="Dealer Code"><b>Inception Date </b></label>
+
+                          <td> <label for="email"><b>DBA</b></label>
                             <br>
-                            <mat-form-field 
-    
-                            class="small-input-field"appearance="outline"
-              >
-                          <!-- <mat-label>Start Date</mat-label> -->
-                          <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
-                          <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
-                           <mat-datepicker #picker1></mat-datepicker>
-    
-                          </mat-form-field>
-                            <!-- <input type="date" placeholder=""[formControlName]="'inceptionDate'" required> -->
-                           </td> 
-                           <br>
+                            <mat-form-field class="small-input-field" appearance="outline">
+                              <input matInput   placeholder=".value" [formControlName]="'dealerCode'" required>
+                            </mat-form-field>
+                            </td>
+                          
+                         
+                          
                            <td><label for="Dealer Code" ><b> Zipcode  </b></label>
                             <br>
                             <mat-form-field class="small-input-field" appearance="outline">
@@ -148,15 +209,28 @@
                          
                           
               </tr></table>
+              <br>
               
+              <td> <label for="Dealer Code"><b>Inception Date </b></label>
+                <br>
+                <mat-form-field 
+
+                class="small-input-field"appearance="outline"
+  >
+              <!-- <mat-label>Start Date</mat-label> -->
+              <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
+              <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+               <mat-datepicker #picker1></mat-datepicker>
+
+              </mat-form-field>
               
+                <!-- <input type="date" placeholder=""[formControlName]="'inceptionDate'" required> -->
+               </td> 
 
               <br>
-              <table class="dba" cellspacing="2"><tr>
+              <table class="dba" cellspacing="0" ><tr>
 
-                <td> <label for="email"><b>DBA</b></label>
-                  <br>
-                  <input type="text" placeholder=".value" [formControlName]="'dealerCode'" required></td>
+               
                   
                    
                        

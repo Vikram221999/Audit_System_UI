@@ -157,3 +157,7 @@ td {
   width: 19%;
   margin: 5px 0 22px 7px;
 }
+
+.search-field {
+  width: 300px;
+}
