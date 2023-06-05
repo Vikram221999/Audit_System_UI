@@ -26,11 +26,13 @@ html, body {
   }
  
   .tablehead {
+    background-color: #4759c2d5;
+    
     font-family: 'Montserrat', 'Open Sans', sans-serif,bold;
     font-weight: 550;
     font-size: 14px;
-  background-color: #f2f2f2;
-  color: #333;
+  
+  color: #ffffff;
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc;
@@ -70,18 +72,41 @@ html, body {
         transition: box-shadow 0.3s ease-in-out;
         
 }
-.mat-elevation-z4 :hover {
-        text-shadow: 0 4px 8px rgba(140, 140, 140, 0.2);
-      }
+/* .mat-elevation-z4 :hover {
+        text-shadow: 0 4px 8px rgba(95, 95, 95, 0.623);
+      } */
 
      
      
-     .mat-toolbar {
-        color: rgb(27, 21, 0);
-     } 
+  
 
      .search-container {
+     
       flex: 1;
-      margin-right : 50px;
+      margin-right : 20px;
+     
     }
+ 
+
+    .white-text-input ::ng-deep .mat-input-element {
+      color: white;
+    }
+
+
+    .grid-tile {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      height: 500px; /* Set the desired height of the container */
+    }
+    
+    .left-container {
+      background-color: #ec8e8e;
+    }
+    
+    .right-container {
+      background-color: #7eacc7;
+    }
+   
      

@@ -121,6 +121,7 @@ td {
 .demo-table {
   width: 100%;
   border-collapse: collapse;
+  color: #566bbe;
 }
 
 .table-header {
@@ -159,5 +160,21 @@ td {
 }
 
 .search-field {
-  width: 300px;
+  width: 250px;
+}
+
+.container1 {
+  width: 500px; /* Set the desired width of the container */
+  height: 400px; /* Set the desired height of the container */
+  padding: 16px;
+  margin: 16px;
+  box-sizing: border-box;
+}
+
+.container2 {
+  width: 300px; /* Set the desired width of the container */
+  height: 200px; /* Set the desired height of the container */
+  padding: 16px;
+  margin: 16px;
+  box-sizing: border-box;
 }

@@ -26,6 +26,11 @@ import { SelectAuditorComponent } from '../select-auditor/select-auditor.compone
   styleUrls: ['./dealer-audit-system.component.css'],
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
+
+  filteredItems: string[] = [];
+  searchTerm: string = '';
+  
+
   startDate = new Date(1990, 0, 1);
   value!: string;
   viewValue!: string;
@@ -84,6 +89,11 @@ export class DealerAuditSystemComponent implements AfterViewInit {
       }
     );
   }
+
+  search() {
+    this.filteredItems = this.displayedColumns1 .filter(displayedColumns1 => displayedColumns1.toLowerCase().includes(this.searchTerm.toLowerCase()));
+  }
+
 
   formGroup() {
     this.projectForm = this._formBuilder.group({
