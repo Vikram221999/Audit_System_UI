@@ -12,10 +12,11 @@ import { Observable, map } from 'rxjs';
 import { DealerService } from '../dealer.service';
 import { Dealer } from '../entity/dealer';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
+import { User } from '../entity/user';
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -44,13 +45,15 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'state',
   ];
   dataSource!: MatTableDataSource<Dealer>;
+  user!:User;
 
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private dealerService: DealerService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route:ActivatedRoute
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -166,6 +169,17 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     thirdCtrl: ['', Validators.required],
   });
   stepperOrientation: Observable<StepperOrientation>;
+
+  userDisplay(){
+    
+    this.user=this.route.snapshot.params['User'];
+    if(this.user!=null||this.user!=undefined){
+    return this.user.firstName
+  }
+  else{
+    return "no user"
+  }
+  }
 }
 
 export interface PeriodicElement {
@@ -174,3 +188,5 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
+
+

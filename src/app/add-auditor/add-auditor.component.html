@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+    <h3 style="padding-left: 15%;">Auditor</h3>
+    <h3 style="padding-left: 40%;">Work Allocation % </h3>
+    
+
+    <mat-drawer-container class="example-container" autosize></mat-drawer-container>
+ 
+  </mat-toolbar>
+
+
+<!-- <h3>{{userName}}</h3> -->
+
+
+<span></span>
+<ng-container *ngIf = "users!= null">
+  <form [formGroup]="projectForm"  >
+<ng-container *ngFor="let person of users; let i = index">
+
+<div style="padding-left: 15%; padding-top: 5%;">
+  <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+    <input  matInput value="{{person.firstName}}"   class="input-bold-placeholder">
+    <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field  style="padding-left: 30%;"class="fuse-mat-no-subscript md:w-60 md:ml-15 w-80"
+  appearance="outline">
+    <input type="number" matInput placeholder="Percentage  " [formControlName]="'percentage'" (blur)="handlePercentage(person, i)">
+  </mat-form-field>
+  <!-- <button (click)="dummy(person, i)">Save</button> -->
+</div>
+
+</ng-container>
+</form>
+</ng-container>
+<ng-container *ngIf = "users.length < 2 " > 
+  <div style="padding-left: 15%; padding-top: 5%;">
+    <!-- <h3>{{person.firstName}}</h3> -->
+    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+      <input matInput placeholder="Lead" >
+      <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field  style="padding-left: 30%;"class="fuse-mat-no-subscript md:w-60 md:ml-15 w-80"
+    appearance="outline">
+      <input type="number" matInput placeholder="Percentage  " >
+    </mat-form-field>
+  </div>
+
+<div style="padding-left: 40%; padding-top: 5%;">
+  <button  mat-raised-button color="primary" (click)="openDialog()">Add Auditor</button>
+</div>
+</ng-container>
+  <div class="mat-elevation-z4">
+    <div mat-dialog-content>
+    </div>
+    <br>
+
+  </div>

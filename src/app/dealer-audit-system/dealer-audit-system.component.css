@@ -1,97 +1,180 @@
 
 .example-container {
-    width: auto;
-    height: 650px;
-    
-  }
+  width: auto;
+  height: 650px;
+
   
-  .example-sidenav-content {
-    display: flex;
-    height: 10%;
-    align-items: first baseline;
-    justify-content: center;
-  }
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 10%;
+  align-items: first baseline;
+  justify-content: center;
   
-  .example-sidenav {
-    padding: 20px;
-  }
+}
 
-  .example-stepper {
-    margin-top: 8px;
-    border: 10%;
-    border-color: black;
-  }
+.example-sidenav {
+  padding: 20px;
+}
+
+.example-stepper {
+  margin-top: 8px;
+  border: 10%;
+  border-color: black;
+}
+
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
   
-  .mat-mdc-form-field {
-    margin-top: 16px;
-  }
+}
+/* .example-full-width{
+  height: 5%;
+} */
 
-  table {
-    width: 100%;
-    
-  }
-  /* .example-full-width{
-    height: 5%;
-  } */
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-block-color: #030303;
+}
 
-  input[type=text], input[type=password] {
-    width: 70%;
-    padding: 10px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-    border-block-color: #030303;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
-  .demo-table {
-    width: 100%;
-  }
-  
-  .mat-mdc-row .mat-mdc-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: currentColor;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: #566bbe;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
 
 
 
-  .container {
-    width: 2000px;
-    height: auto;
-    /* width: auto;
-    height: auto; */
-    background-color: #ffffff; /* Set the background color of the container */
-    border: 1px solid #000; /* Set the border of the container */
-    padding: 20px; /* Set the padding inside the container */
-    margin: 0 auto; /* Center the container horizontally */
-  }
+.container {
+  width: 2000px;
+  height: auto;
+  /* width: auto;
+  height: auto; */
+  background-color: #ffffff; /* Set the background color of the container */
+  border: 1px solid #000; /* Set the border of the container */
+  padding: 20px; /* Set the padding inside the container */
+  margin: 0 auto; /* Center the container horizontally */
+ 
+}
 
 
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+
+}
 
 
-  .dateStyle {
-    background-color: #ddd
-  }
+.dateStyle {
+  background-color: #ddd
+}
+
+.mat-toolbar {
+  height: 40px;
+}
+
+
+
+.mat-form-field-appearance-outline {
+  padding: -53em 0 1em 0;
+}
+
+
+
+td {
+  vertical-align: middle;
+  horizontal-align: left;
+}
+
+.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  font-size: medium;
+  color: rgb(59, 59, 59);
+}
+
+.table-cell {
+  font-size: medium;
+}
+.mat-form-field {
+  padding: 5px;
+}
+
+.small-input-field {
+  width: 200px;
+  height: 0px;
+  font-size: 12px;
+}
+
+.mat-label {
+  font-size: small;
+}
+
+.example-container {
+  overflow: hidden;
+}
+
+.mat-elevation-z8 {
+  overflow: hidden;
+}
+
+.dba {
+  width: 19%;
+  margin: 5px 0 22px 7px;
+}
+
+.search-field {
+  width: 300px;
+}
+
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+
+
+
+
+
