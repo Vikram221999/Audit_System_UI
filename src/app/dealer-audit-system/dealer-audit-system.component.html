@@ -41,7 +41,7 @@
                   <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
                     <mat-form-field class="search-field" appearance="fill" >
                       <!-- <mat-icon matPrefix>search</mat-icon> -->
-                      <input matInput [(ngModel)]="searchTerm" (input)="search()" placeholder="Search by Dealer Code" />
+                      <input matInput  placeholder="Search by Dealer Code" />
                       <button mat-icon-button matSuffix>
                         <mat-icon>sort</mat-icon>
                       </button>
@@ -605,19 +605,27 @@
        
         <mat-step [stepControl]="thirdFormGroup" label="4.Review and Submit">
           <table>
-            <tr>
-              <mat-card class="container1">
+
+            <div class="row">
+              <div class="col">
+           
+              
+              <mat-card class="container1" style= "background-color:red">
                 <!-- Content for the container -->
               </mat-card>
-            </tr>
-            <td>
-              <mat-card class="container2">
+            </div>
+
+            
+           <div class="col">
+              <mat-card class="container2 " style="background-color: blueviolet;">
                 <!-- Content for the container -->
               </mat-card>
-              <mat-card class="container2">
+              <mat-card class="container3" style="background-color: blueviolet;">
                 <!-- Content for the container -->
               </mat-card>
-            </td>
+            </div>
+            
+          </div>
           </table>
          
          
