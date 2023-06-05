@@ -137,10 +137,27 @@ td {
 
 .small-input-field {
   width: 200px;
-  height: 1px;
+  height: 0px;
   font-size: 12px;
 }
 
 .mat-label {
   font-size: small;
+}
+
+.example-container {
+  overflow: hidden;
+}
+
+.mat-elevation-z8 {
+  overflow: hidden;
+}
+
+.dba {
+  width: 19%;
+  margin: 5px 0 22px 7px;
+}
+
+.search-field {
+  width: 300px;
 }

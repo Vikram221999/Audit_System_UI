@@ -4,7 +4,7 @@
       <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h3>Dealer Audit System</h3>
+      <h3>DEALER AUDIT SYSTEM</h3>
     </mat-toolbar>
     
   </div>
@@ -18,31 +18,95 @@
         class="example-stepper"
         [orientation]="(stepperOrientation | async)!"  #stepper >
         <mat-step  [stepControl]="firstFormGroup" label="1. Select Dealer" >   
-          <form >
-            <br>
-            <div class="mat-elevation-z8">
+         
 
-               <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+<!--           
+          <table mat-table >
+           
+           
+          </table> -->
+          <form >
+
+           
+            <br>
+            <div class="mat-elevation-z4" color="primary" >
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill" >
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Dealer Code" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+              
+             
+          
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill">
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Business Center" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+
+             
+         
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill">
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search By Dealer Name" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon>sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+
+             
+          
+              <th>
+                <div fxLayout="row" fxLayoutAlign="start center" class="search-container">
+                  <mat-form-field class="search-field" appearance="fill" >
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+                    <input matInput placeholder="Search by Dealer State" />
+                    <button mat-icon-button matSuffix>
+                      <mat-icon >sort</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </th>
+
+               <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 demo-table">
+                
                 
                 <ng-container matColumnDef="dealerCode"  >
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);" >Dealar Code</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead" >Dealar Code</th>
                   <td mat-cell *matCellDef="let element">{{element.dealerCode}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="businessCenter">
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);" >Business Center</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead">Business Center</th>
                   <td mat-cell *matCellDef="let element">{{element.businessCenter}}</td>
                 </ng-container>
               
                 
                 <ng-container matColumnDef="dealerName">
-                  <th mat-header-cell *matHeaderCellDef style= "font-size: medium;color: rgb(59, 59, 59);"> Dealer Name</th>
+                  <th mat-header-cell *matHeaderCellDef class="tablehead"> Dealer Name</th>
                   <td mat-cell *matCellDef="let element">{{element.dealerName}}</td>
                 </ng-container>
               
                
                 <ng-container matColumnDef="state">
-                  <th mat-header-cell *matHeaderCellDef  style= "font-size: medium;color: rgb(59, 59, 59);">Dealer State</th>
+                  <th mat-header-cell *matHeaderCellDef  class="tablehead">Dealer State</th>
                   <td mat-cell *matCellDef="let element">{{element.address.state}}</td>
                 </ng-container>
              
@@ -66,9 +130,9 @@
         <mat-step  label="2.Dealer Information">
          
           <form [formGroup]="projectForm">
-            <div class="mat-elevation-z8"> 
+            <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;"> 
             <mat-toolbar color="primary" >
-                <h4>DealerShip Details</h4>
+                <h4>DEALERSHIP DETAILS</h4>
             </mat-toolbar>
             <br>
             
@@ -103,8 +167,10 @@
                             <!-- <input type="text" placeholder="dealerName.value" [formControlName]="'dealerName'" required> -->
                           </td>
                          
-                         
-              </tr></table>
+                           
+              </tr>
+            
+            </table>
               <br>
               <table class="example-full-width" cellspacing="0"><tr>
               
@@ -116,21 +182,16 @@
                           </mat-form-field>
                             <!-- <input type="text" placeholder="saleGroupSize.value" [formControlName]="'saleGroupSize'" required> -->
                           </td>
-                          <td> <label for="Dealer Code"><b>Inception Date </b></label>
+
+                          <td> <label for="email"><b>DBA</b></label>
                             <br>
-                            <mat-form-field 
-    
-                            class="small-input-field"appearance="outline"
-              >
-                          <!-- <mat-label>Start Date</mat-label> -->
-                          <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
-                          <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
-                           <mat-datepicker #picker1></mat-datepicker>
-    
-                          </mat-form-field>
-                            <!-- <input type="date" placeholder=""[formControlName]="'inceptionDate'" required> -->
-                           </td> 
-                           <br>
+                            <mat-form-field class="small-input-field" appearance="outline">
+                              <input matInput   placeholder=".value" [formControlName]="'dealerCode'" required>
+                            </mat-form-field>
+                            </td>
+                          
+                         
+                          
                            <td><label for="Dealer Code" ><b> Zipcode  </b></label>
                             <br>
                             <mat-form-field class="small-input-field" appearance="outline">
@@ -148,15 +209,28 @@
                          
                           
               </tr></table>
+              <br>
               
+              <td> <label for="Dealer Code"><b>Inception Date </b></label>
+                <br>
+                <mat-form-field 
+
+                class="small-input-field"appearance="outline"
+  >
+              <!-- <mat-label>Start Date</mat-label> -->
+              <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
+              <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+               <mat-datepicker #picker1></mat-datepicker>
+
+              </mat-form-field>
               
+                <!-- <input type="date" placeholder=""[formControlName]="'inceptionDate'" required> -->
+               </td> 
 
               <br>
-              <table class="example-full-width" cellspacing="2"><tr>
+              <table class="dba" cellspacing="0" ><tr>
 
-                <td> <label for="email"><b>DBA</b></label>
-                  <br>
-                  <input type="text" placeholder=".value" [formControlName]="'dealerCode'" required></td>
+               
                   
                    
                        
@@ -168,10 +242,12 @@
           </div> 
     
           <br>
-          <div class="mat-elevation-z8">
-            <mat-toolbar color="primary">
-              <h3 style="padding-left: 0%;">Address</h3>
-              <!-- <h3 style="padding-left: 55%;">Work Allocation </h3> -->
+          <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;">
+            <mat-toolbar color="primary" >
+              
+              <h3 style="padding-left: 0%;">ADDRESS</h3>
+              <h3 style="padding-left: 69%;">CONTACT DETAILS</h3>
+              <!-- <mat-toolbar color="primary" style="width: 30%; padding-left: 15%;"></mat-toolbar> -->
         </mat-toolbar>
         <br>
       
@@ -209,7 +285,7 @@
                       <!-- <input type="text" placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" required> -->
                     </td>
           </tr></table>
-
+          <br>
           <table class="example-full-width" cellspacing="0"><tr>
 
             <td> <label for="email"><b>City</b></label>
@@ -223,21 +299,21 @@
             
             <td> <label for="Dealer Code"><b>ZIP </b></label>
               <br>
-              <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+              <mat-form-field class="small-input-field" appearance="outline">
               <input matInput placeholder="zicode.value" [formControlName]="'zicode'" />
           </mat-form-field>
               <!-- <input type="text" placeholder="zicode.value" [formControlName]="'zicode'" required> -->
 
                 <td> <label for="Dealer Code"><b>Country </b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-30 w-50 md:mr-0 sm:mr-10" appearance="outline">
+                    <mat-form-field class="small-input-field" appearance="outline">
                       <input matInput placeholder="country.value" [formControlName]="'country'" />
                   </mat-form-field>
                     <!-- <input type="text" placeholder="country.value" [formControlName]="'country'" required> -->
-
+                  
                     <td> <label for="Dealer Code"><b>Dealer email </b></label>
                       <br>
-                      <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                      <mat-form-field class="small-input-field" appearance="outline">
                         <input matInput placeholder="email.value" [formControlName]="'email'" />
                     </mat-form-field>
                     
@@ -255,15 +331,15 @@
                 
           </tr></table>
   
-          <br>
+          <!-- <br>
           <div class="mat-elevation-z8">
             <mat-toolbar color="primary">
-              <h3 style="padding-left: 0%;">Contact Details</h3>
+              <h3 style="padding-left: 0%;">Contact Details</h3> -->
               <!-- <h3 style="padding-left: 55%;">Work Allocation </h3> -->
-        </mat-toolbar>
+        <!-- </mat-toolbar>
         <br>
 
-        </div>
+        </div> -->
       
     <!-- <mat-toolbar color="primary">
         <h3>Contact Details</h3>
@@ -274,54 +350,49 @@
 
         <td> <label for="email"><b>Phone</b></label>
             <br>
-            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+            <mat-form-field class="small-input-field" appearance="outline">
               <input matInput placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" />
           </mat-form-field>
             <input type="text" placeholder="phoneNumber.value" [formControlName]="'phoneNumber'" required> -->
           <!-- </td> -->
             <!-- <td> <label for="Dealer Code"><b>Dealer email </b></label>
                 <br>
-                <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                <mat-form-field class="small-input-field" appearance="outline">
                   <input matInput placeholder="email.value" [formControlName]="'email'" />
               </mat-form-field> -->
                 <!-- <input type="text" placeholder="email.value" [formControlName]="'email'" required> -->
       <!-- </tr></table>  -->
   
     </form>
-    <div style="margin-left: 85%;">
-      <button mat-button matStepperPrevious color="primary">Back</button>
-      <button mat-button matStepperNext color="primary">Next</button>
-    </div>
+     <div class="button-container">
+    <button matStepperPrevious class="back-button">Back</button>
+    <button matStepperNext class="next-button">Next</button>
+  </div>
         </mat-step>
 
 
 
-        <mat-step [stepControl]="thirdFormGroup" label="3.Assign Auditation">
+        <mat-step [stepControl]="thirdFormGroup" label="3.Assign Auditors">
    
             <!-- <mat-toolbar color="primary">
               <h3>DealerShip Details</h3>
             </mat-toolbar> -->
             <br>
           <form  [formGroup]="projectForm">
-            
+            <div class="mat-elevation-z4" style="padding: 30px; height: fit-content;">
               <table class="example-full-width" cellspacing="0"><tr>
+
                 <td> <label for="auditype"><b>Audit Type</b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                      <mat-select placeholder="Audit Type" disableRipple>
-                        <mat-option value="1">Sales</mat-option>
-                        <mat-option value="2">Accounts</mat-option>
-                        <mat-option value="3">Cost</mat-option>
-                        <mat-option value="4">Expertise</mat-option>
+                    <mat-form-field class="small-input-field" appearance="outline">
+                      <!-- <mat-label>Audit Type</mat-label> -->
+                      <mat-select disableRipple placeholder="Select Type">
+                        <mat-option value="1">Performance</mat-option>
+                        <mat-option value="2">Internal </mat-option>
+                        <mat-option value="3">Financial </mat-option>
+                        <mat-option value="3">Compliance  </mat-option>
                       </mat-select>
-                      <!-- <mat-select  placeholder="Audit Type"  [formControlName]="''" disableRipple>
-                        <mat-option value="1">Sales</mat-option>
-                        <mat-option value="2">Accounts</mat-option>
-                        <mat-option value="3">Cost</mat-option>
-                        <mat-option value="3">Expertise</mat-option>
-                      </mat-select> -->
-                  <!-- </mat-fo -->
-                      
+                     
                   </mat-form-field>
                     <!-- <input type="text" placeholder="" name="Audit Type" required> -->
                   
@@ -330,7 +401,7 @@
                     <br>
                     <mat-form-field 
 
-                        class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline"
+                        class="small-input-field"appearance="outline"
           >
                       <mat-label>Start Date</mat-label>
                       <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
@@ -342,7 +413,7 @@
                    </td>  -->
                     <td> <label for="DateAssigned"><b>Date Assigned</b></label>
                         <br>
-                        <mat-form-field  class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline">
+                        <mat-form-field  class="small-input-field" appearance="outline">
                       <mat-label>Start Date</mat-label>
                       <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" "[matDatepicker]="picker1" />
                       <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
@@ -352,7 +423,7 @@
                       </td>
                     
                        
-                        <!-- <mat-form-field  class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+                        <!-- <mat-form-field  class="small-input-field" appearance="outline">
                           <input matInput [matDatepicker]="picker">
                           <mat-hint>MM/DD/YYYY</mat-hint>
                           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -364,68 +435,64 @@
                         <br>
                         <td><label for="ReasonAuditwasSelected"><b>Reason Audit was Selected</b></label>
                             <br>
-                            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                              <input matInput placeholder="city.value" [formControlName]="'city'"  />
+                            <mat-form-field class="small-input-field" appearance="outline">
+                              <input matInput placeholder="Audit Reason" [formControlName]="'city'"  />
                           </mat-form-field>
                             <!-- <input type="text" placeholder="" name="ReasonAuditwasSelected" required> -->
                           </td>
 
               </tr></table>
+              <br>
               <table class="example-full-width" cellspacing="0"><tr>
                 <td> <label for="reportsLanguage"><b>Reports Language</b></label>
                     <br>
-                    <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"appearance="outline">
+                    <mat-form-field class="small-input-field" appearance="outline">
                       <!-- <mat-label>Select Language</mat-label> -->
-                        <mat-select  placeholder="Select Language"  [formControlName]="''" disableRipple>
-                          <mat-option value="1">English</mat-option>
-                          <mat-option value="2">Tamil</mat-option>
-                          <mat-option value="3">Hindi</mat-option>
-                        </mat-select>
-                      
-                      <!-- <mat-select  placeholder="language" [formControlName]="'language'" >
-                        <mat-option *ngFor="let lang of language" >
-                          {{lang}}
-                        </mat-option>
-                      </mat-select> -->
+                      <mat-select disableRipple placeholder="Select Language">
+                        <mat-option value="1">English</mat-option>
+                        <mat-option value="2">Tamil</mat-option>
+                        <mat-option value="3">Hindi</mat-option>
+                      </mat-select>
+                  
                     </mat-form-field>
                     
                    
                   </td>
                     <td> <label for="NoOfMonthData"><b>No Of Month Data </b></label>
                         <br>
-                        <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                          <input matInput placeholder="city.value" [formControlName]="'city'"  />
+                        <mat-form-field class="small-input-field" appearance="outline">
+                          <input matInput placeholder="Months Data" [formControlName]="'city'"  />
                       </mat-form-field>
                        
                         <!-- <input type="text" placeholder="" name="" required> -->
                       </td>
                         <td> <label for="stateLegalLimitation"><b>State Legal Limitation</b></label>
                             <br>
-                            <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
-                              <input matInput placeholder="city.value" [formControlName]="'city'"  />
+                            <mat-form-field class="small-input-field" appearance="outline">
+                              <input matInput placeholder="Legal Limitation" [formControlName]="'city'"  />
                           </mat-form-field>
                             <!-- <input type="text" placeholder="" name="" required> -->
                           </td>
 
               </tr></table>
+              <br>
               <table class="example-full-width" cellspacing="0"><tr>
 
                 <td> <label for="comments"><b>Comments</b></label>
                     <br>
                     <mat-form-field class="example-full-width">
                       <mat-label>Leave a comment</mat-label>
-                      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                      <textarea matInput placeholder="Ex. About this audit..."></textarea>
                     </mat-form-field>
                   </td>
                   </table>
+                </div>
+                <br>
             
-    
-            
-                  
                     <mat-toolbar color="primary">
                       <h3 style="padding-left: 15%;">Auditor</h3>
                       <h3 style="padding-left: 55%;">Work Allocation </h3>
-
+ 
                       <mat-drawer-container class="example-container" autosize></mat-drawer-container>
                    
                     </mat-toolbar>
@@ -435,9 +502,9 @@
                   </div>
 
 
-                    <div class="mat-elevation-z8">
+                    <div class="mat-elevation-z4">
 
-                      <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+                      <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z4 demo-table">
                        
                        <ng-container matColumnDef="dealerCode">
                          <th mat-header-cell *matHeaderCellDef>Dealar Code</th>
@@ -499,6 +566,7 @@
                     <div mat-dialog-content>
                       <!-- Add content for your dialog -->
                     </div>
+                    <br>
                     <!-- <div mat-dialog-actions>
                       <button mat-button mat-dialog-close>Close</button>
                       
@@ -512,18 +580,19 @@
   <button mat-button mat-dialog-close>Close</button>
  
 </div> -->
+</div>
+<br>
+<div class="button-container">
+  <button matStepperPrevious class="back-button">Back</button>
+  <button matStepperNext class="next-button">Next</button>
 
-                  <div class="px-2">
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
-                  </div>
                   </div>
                 </form>
         </mat-step>
         <br>
        
           <form >
-            <div class="mat-elevation-z8">
+            <div class="mat-elevation-z4">
                 <table mat-table [dataSource]="dataSource">
               
                   
@@ -559,10 +628,11 @@
                                aria-label="Select page of periodic elements">
                 </mat-paginator>
               </div>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
+              <div class="button-container">
+                <button matStepperPrevious class="back-button">Back</button>
+                <button matStepperNext class="next-button">Next</button>
+              
+                                </div>
           </form>
        
         <mat-step [stepControl]="thirdFormGroup" label="4.Review and Submit">
@@ -571,17 +641,18 @@
                 <mat-label>Phone number</mat-label>
                 <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
               </mat-form-field>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+              <div class="button-container">
+                <button matStepperPrevious class="back-button">Back</button>
+                <button matStepperNext class="next-button">Next</button>
               </div>
             </form>
           </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
+          <div class="button-container">
+            <button matStepperPrevious class="back-button">Back</button>
+            <button  class="next-button">Submit</button>
           </div>
         </mat-step>
       </mat-stepper>
