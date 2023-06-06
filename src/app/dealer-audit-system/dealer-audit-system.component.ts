@@ -26,6 +26,7 @@ import { SelectAuditorComponent } from '../select-auditor/select-auditor.compone
   styleUrls: ['./dealer-audit-system.component.css'],
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
+[x: string]: any;
   startDate = new Date(1990, 0, 1);
   value!: string;
   viewValue!: string;
