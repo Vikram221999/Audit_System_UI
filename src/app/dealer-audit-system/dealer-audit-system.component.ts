@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Injectable({
@@ -51,6 +52,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   selectedRowData: any;
   dealerss!: Dealer;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  filterTerm!: string;
   displayedColumns1: string[] = [
     'dealerCode',
     'businessCenter',
@@ -65,9 +67,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
 
   
   dataSource!: MatTableDataSource<Dealer>;
-  searchName!:string;
 
- 
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
@@ -162,7 +164,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   onRowClicked(row: any, stepper: MatStepper) {
     console.log('Row clicked: ', row);
@@ -171,6 +175,12 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     stepper.next();
     this.getSingleDealer();
   }
+
+  applyFilter() {
+    const filterValue = this.filterTerm.trim().toLowerCase();
+    this.Dealer.dealerCode.filter = filterValue;
+  }
+
   openDialog(): void {
     // Open your popup dialog here
     const dialogRef = this.dialog.open(SelectAuditorComponent, {
