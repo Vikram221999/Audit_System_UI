@@ -16,6 +16,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder } fro
 import { HttpClientModule } from '@angular/common/http';
 import { SelectAuditorComponent } from './select-auditor/select-auditor.component';
 
+import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
+
 
 
 
@@ -27,6 +29,7 @@ import { SelectAuditorComponent } from './select-auditor/select-auditor.componen
     SideNavbarComponent,
     TopNavbarComponent,
     SelectAuditorComponent,
+    SearchDealerCodePipe,
     
   ],
   imports: [

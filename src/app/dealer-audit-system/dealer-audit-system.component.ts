@@ -1,6 +1,16 @@
+import { Dealer } from './../entity/dealer';
+import { DealerService } from './../dealer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { AfterViewInit, Component, Injectable, ViewChild } from '@angular/core';
+import { ThemePalette,   } from '@angular/material/core';
+
+import {
+  AfterViewInit,
+  Component,
+  Injectable,
+  Pipe,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   UntypedFormBuilder,
@@ -9,13 +19,14 @@ import {
 } from '@angular/forms';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Observable, map } from 'rxjs';
-import { DealerService } from '../dealer.service';
-import { Dealer } from '../entity/dealer';
+
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
+
+
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -26,10 +37,8 @@ import { SelectAuditorComponent } from '../select-auditor/select-auditor.compone
   styleUrls: ['./dealer-audit-system.component.css'],
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
-
   filteredItems: string[] = [];
   searchTerm: string = '';
-  
 
   startDate = new Date(1990, 0, 1);
   value!: string;
@@ -48,15 +57,28 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'dealerName',
     'state',
   ];
-  dataSource!: MatTableDataSource<Dealer>;
+  
+  @Pipe({
+    name: 'filter'
+  })
 
+
+  
+  dataSource!: MatTableDataSource<Dealer>;
+  searchName!:string;
+
+ 
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private dealerService: DealerService,
     private router: Router,
     private dialog: MatDialog
-  ) {
+   
+  ) 
+  
+  
+  {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
@@ -68,6 +90,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
 
     return day !== 0 && day !== 6;
   };
+
+
+
 
   ngOnInit(): void {
     this.getDealers();
@@ -90,11 +115,6 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     );
   }
 
-  search() {
-    this.filteredItems = this.displayedColumns1 .filter(displayedColumns1 => displayedColumns1.toLowerCase().includes(this.searchTerm.toLowerCase()));
-  }
-
-
   formGroup() {
     this.projectForm = this._formBuilder.group({
       dealerCode: ['', Validators.required],
@@ -111,6 +131,11 @@ export class DealerAuditSystemComponent implements AfterViewInit {
       email: ['', Validators.required],
     });
   }
+
+  
+
+
+
 
   getSingleDealer() {
     this.dealerService.getSingleDealer(this.dealerId).subscribe((data) => {
@@ -149,13 +174,14 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   openDialog(): void {
     // Open your popup dialog here
     const dialogRef = this.dialog.open(SelectAuditorComponent, {
-      width:"90%",height:"90%"
-    
+      width: '90%',
+      height: '90%',
+
       // Specify dialog options if needed
     });
 
     // Handle dialog close event if necessary
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       // Do something with the result
     });
   }
@@ -184,3 +210,6 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
+
+
+

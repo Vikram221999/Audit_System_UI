@@ -9,6 +9,7 @@
 
 
 html, body {
+  overflow: hidden;
     font-family: 'Graphik-regular',sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -93,20 +94,18 @@ html, body {
     }
 
 
-    .grid-tile {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
 
-    .container {
-      height: 500px; /* Set the desired height of the container */
+    .primary-theme {
+      background-color: blue;
+      color: white;
     }
     
-    .left-container {
-      background-color: #ec8e8e;
+    .accent-theme {
+      background-color: green;
+      color: white;
     }
     
-    .right-container {
-      background-color: #7eacc7;
+    .warn-theme {
+      background-color: red;
+      color: white;
     }
-   
-     
