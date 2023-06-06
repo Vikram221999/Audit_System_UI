@@ -4,51 +4,63 @@ import { DealerService } from '../dealer.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Dealer } from '../entity/dealer';
 import { MatSort } from '@angular/material/sort';
+import { Audit } from '../entity/audit';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
+import { User } from '../entity/user';
 
 @Component({
   selector: 'app-select-auditor',
   templateUrl: './select-auditor.component.html',
-  styleUrls: ['./select-auditor.component.css']
+  styleUrls: ['./select-auditor.component.css'],
 })
 export class SelectAuditorComponent implements OnInit {
   dealerId!: number;
-  dataSource!: MatTableDataSource<Dealer>;
+  dataSource!: MatTableDataSource<Audit>;
+  user!: User;
   @ViewChild(MatSort) sort!: MatSort;
+
   displayedColumns1: string[] = [
-    'dealerCode',
-    'businessCenter',
-    'dealerName',
-    'state',
+    'lastName',
+    'firstName',
+    'title',
+    'description',
   ];
 
-  constructor( private dealerService: DealerService,) { }
+  constructor(
+    private dealerService: DealerService,
+    private router: Router,
+    public dialogRef: MatDialogRef<SelectAuditorComponent>
+  ) {}
 
   ngOnInit(): void {
-
-    this.getDealers();
+    this.getAuditors();
   }
-
 
   onRowClicked(row: any) {
     console.log('Row clicked: ', row);
-    this.dealerId = row.dealerCode;
-    console.log(this.dealerId);
-    
-    // this.getSingleDealer();
+    this.user = row;
+    // this.dealerService.setAuditor(this.user);
+    // console.log(this.dealerId);
+    this.dialogRef.close(row);
+  
+
+    // this.closeDialog;
+
   }
-  getDealers() {
-    this.dealerService.getDealers().subscribe(
+  closeDialog( ): void {
+    this.dialogRef.close();
+  }
+  getAuditors() {
+    this.dealerService.getAuditors().subscribe(
       (data) => {
-        this.dataSource = new MatTableDataSource(data);
-
-        this.dataSource.sort = this.sort;
-
         console.log(data);
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
       },
       (err) => {
         console.log(err);
       }
     );
   }
-
 }

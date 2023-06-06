@@ -15,6 +15,7 @@ import { TopNavbarComponent } from './navbars/top-navbar/top-navbar.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SelectAuditorComponent } from './select-auditor/select-auditor.component';
+import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
 
 
@@ -27,6 +28,7 @@ import { SelectAuditorComponent } from './select-auditor/select-auditor.componen
     SideNavbarComponent,
     TopNavbarComponent,
     SelectAuditorComponent,
+    AddAuditorComponent,
     
   ],
   imports: [
