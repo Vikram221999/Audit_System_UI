@@ -11,14 +11,15 @@ import { User } from "./entity/user";
   })
 
   export class DealerService{
-    // private auditor :BehaviorSubject<any> = new BehaviorSubject(null);
+    private user :BehaviorSubject<any> = new BehaviorSubject(null);
 
-    // getAuditor(): Observable<User[]> {
-    //   return this.auditor;
-    // }
-    // setAuditor(auditor: User) {
-    //   return this.auditor.next(auditor);
-    // }
+
+    getAuditor(): Observable<User[]> {
+      return this.user;
+    }
+    setAuditor(user: User) {
+      return this.user.next(user);
+    }
     private baseURL:string = 'http://localhost:9091/dealer/';
 
     private baseURL1:string = 'http://localhost:9091/auditor/';

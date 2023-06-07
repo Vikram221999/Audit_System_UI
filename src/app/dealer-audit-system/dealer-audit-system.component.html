@@ -213,18 +213,13 @@
               
               <td> <label for="Dealer Code"><b>Inception Date </b></label>
                 <br>
-                <mat-form-field 
+                <mat-form-field
+                class="small-input-field"appearance="outline">
 
-                class="small-input-field"appearance="outline"
-  >
-              <!-- <mat-label>Start Date</mat-label> -->
-              <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" assignmentStartDate.value "[matDatepicker]="picker1" />
+              <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" "[matDatepicker]="picker1" />
               <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
                <mat-datepicker #picker1></mat-datepicker>
-
               </mat-form-field>
-              
-                <!-- <input type="date" placeholder=""[formControlName]="'inceptionDate'" required> -->
                </td> 
 
               <br>
@@ -360,7 +355,7 @@
                   
                   </td>
                   
-                    <td> <label for="DateAssigned"><b>Date Assigned</b></label>
+                    <!-- <td> <label for="DateAssigned"><b>Date Assigned</b></label>
                         <br>
                         <mat-form-field  class="small-input-field" appearance="outline">
                       <mat-label>Start Date</mat-label>
@@ -369,7 +364,17 @@
                        <mat-datepicker #picker1></mat-datepicker>
 
                       </mat-form-field>
-                      </td>
+                      </td> -->
+                      <td> <label for="DateAssigned"><b>Date Assigned </b></label>
+                        <br>
+                        <mat-form-field
+                        class="small-input-field"appearance="outline">
+        
+                      <input  matInput  [formControlName]="'assignmentStartDate'" placeholder=" "[matDatepicker]="picker3" />
+                      <mat-datepicker-toggle matSuffix [for]="picker3" ></mat-datepicker-toggle>
+                       <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field>
+                       </td> 
                     
                        
                         <!-- <mat-form-field  class="small-input-field" appearance="outline">
