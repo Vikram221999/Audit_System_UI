@@ -18,6 +18,7 @@ import { SelectAuditorComponent } from './select-auditor/select-auditor.componen
 import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -49,7 +50,8 @@ import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule     
+    ReactiveFormsModule  ,
+    MatTableModule   
 
   ],
   providers: [FormBuilder

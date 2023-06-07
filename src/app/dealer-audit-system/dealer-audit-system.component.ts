@@ -20,7 +20,7 @@ import {
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Observable, map } from 'rxjs';
 
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
@@ -48,7 +48,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   projectForm: any;
   language: String[] = ['English', 'Tamil', 'Hindi'];
   dealerId!: number;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -100,7 +100,73 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   ngOnInit(): void {
     this.getDealers();
     this.formGroup();
+
+    this.displayedColumns.forEach(column => {
+      this.dataSource.sortingDataAccessor = (data, sortHeaderId) => {
+        switch (sortHeaderId) {
+          case 'dealerCode':
+            return data.dealerCode;
+          case 'businessCenter':
+            return data.businessCenter;
+          case 'dealerName':
+            return data.dealerName;
+          case 'dealerState':
+            return data.address.state;
+          default:
+            return '';
+        }
+      };
+    });
+ 
   }
+
+// applyFilter(event: any): void {
+//   const filterValue = event.target.value;
+//   this.dataSource.filter = filterValue.trim().toLowerCase();
+// }
+
+// applyFilter(event: Event, columnName: string): void {
+//   const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+//   this.dataSource.filter = filterValue.substring(0,filterValue.length-1);
+
+//   this.dataSource.filterPredicate = (data: any) => {
+//     const columnValue = data[columnName].toString().toLowerCase();
+//     return columnValue.includes(filterValue);
+//   };
+// }
+
+
+filterValues: { [key: string]: string } = {};
+applyFilter(event: Event, columnName: string): void {
+  const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  this.filterValues[columnName] = filterValue;
+
+  this.dataSource.filterPredicate = (data: any) => {
+    let match = true;
+    for (const key in this.filterValues) {
+      if (this.filterValues.hasOwnProperty(key)) {
+        const columnValue = data[key]?.toString().toLowerCase();
+        const filterVal = this.filterValues[key];
+        if (columnValue && !columnValue.includes(filterVal)) {
+          match = false;
+          break;
+        }
+      }
+    }
+    return match;
+  };
+
+  this.dataSource.filter = 'filtering';
+}
+
+
+
+
+
+
+
+
 
   clickedRows = new Set<any>();
   getDealers() {

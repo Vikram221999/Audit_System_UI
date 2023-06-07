@@ -115,7 +115,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 td {
   vertical-align: middle;
-  horizontal-align: left;
+  /* horizontal-align: left; */
 }
 
 .demo-table {
@@ -162,7 +162,7 @@ td {
 .search-field {
   width: 240px;
   height: 48px;
-  background-color: rgb(241, 242, 255);
+  background-color: rgb(255, 255, 255);
    padding-bottom: 10px;
 }
 
@@ -207,7 +207,7 @@ td {
 }
 
 .tablehead {
-  background-color: #4759c2d5;
+  background-color: #627ed867;
   
   font-family: 'Montserrat', 'Open Sans', sans-serif,bold;
   font-weight: 550;
@@ -223,5 +223,6 @@ border-bottom: 1px solid #ccc;
 
 
 .mat-icon  {
-  color: #000;
+  color: #000000;
 }
+
