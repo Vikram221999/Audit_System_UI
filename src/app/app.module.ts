@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectAuditorComponent } from './select-auditor/select-auditor.component';
 import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
+import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
+import { ReviewSubmitComponent } from './review-submit/review-submit.component';
+
 
 
 
@@ -28,7 +31,12 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
     SideNavbarComponent,
     TopNavbarComponent,
     SelectAuditorComponent,
+
     AddAuditorComponent,
+
+    SearchDealerCodePipe,
+      ReviewSubmitComponent,
+
     
   ],
   imports: [

@@ -1,4 +1,6 @@
 
+
+
 .example-container {
   width: auto;
   height: 650px;
@@ -101,9 +103,7 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd
 }
 
-.mat-toolbar {
-  height: 40px;
-}
+
 
 
 
@@ -121,6 +121,7 @@ td {
 .demo-table {
   width: 100%;
   border-collapse: collapse;
+  color: #566bbe;
 }
 
 .table-header {
@@ -159,7 +160,39 @@ td {
 }
 
 .search-field {
-  width: 300px;
+  width: 240px;
+  height: 48px;
+  background-color: rgb(241, 242, 255);
+   padding-bottom: 10px;
+}
+
+.container1,.container1-h4 {
+  width: 670px; /* Set the desired width of the container */
+  height: 516px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
+}
+
+.container2, .container2-h4{
+  width: 550px; /* Set the desired width of the container */
+  height: 250px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
+}
+.container3, .container3-h4{
+  width: 550px; /* Set the desired width of the container */
+  height: 250px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
 }
 
 
@@ -173,8 +206,22 @@ td {
   cursor: pointer;
 }
 
+.tablehead {
+  background-color: #4759c2d5;
+  
+  font-family: 'Montserrat', 'Open Sans', sans-serif,bold;
+  font-weight: 550;
+  font-size: 14px;
+  padding-bottom: 18px;
+color: #ffffff;
+padding: 10px;
+text-align: left;
+border-bottom: 1px solid #ccc;
+}
 
 
 
 
-
+.mat-icon  {
+  color: #000;
+}

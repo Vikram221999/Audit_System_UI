@@ -1,22 +1,34 @@
+import { Dealer } from './../entity/dealer';
+import { DealerService } from './../dealer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { AfterViewInit, Component, Injectable, ViewChild } from '@angular/core';
+import { MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
+
+
+import {
+  AfterViewInit,
+  Component,
+  Injectable,
+  Pipe,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Observable, map } from 'rxjs';
-import { DealerService } from '../dealer.service';
-import { Dealer } from '../entity/dealer';
+
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
 import { User } from '../entity/user';
+import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -25,15 +37,22 @@ import { User } from '../entity/user';
   selector: 'app-dealer-audit-system',
   templateUrl: './dealer-audit-system.component.html',
   styleUrls: ['./dealer-audit-system.component.css'],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-US' }]
 })
 export class DealerAuditSystemComponent implements AfterViewInit {
+  filteredItems: string[] = [];
+  searchTerm: string = '';
+
+[x: string]: any;
+
   startDate = new Date(1990, 0, 1);
   value!: string;
   viewValue!: string;
   Dealer!: any;
   projectForm: any;
+  assignAuditor:any;
   language: String[] = ['English', 'Tamil', 'Hindi'];
-  dealerId!: number;
+   dealerId!: number;
   @ViewChild(MatSort) sort!: MatSort;
   selectedRowData: any;
   dealerss!: Dealer;
@@ -44,28 +63,49 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'dealerName',
     'state',
   ];
-  dataSource!: MatTableDataSource<Dealer>;
-  user!:User;
 
+  dealerId1 !: any ;
+  // =this.dealerService.getDealerId();
+
+  
+  @Pipe({
+    name: 'filter'
+  })
+
+
+  
+  dataSource!: MatTableDataSource<Dealer>;
+  searchName!:string;
+  dateAssignedControl = new FormControl();
+  dateAssignedFormat = 'dd/MM/yyyy';
+   user!:User;
+   isNextClicked = false;
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private dealerService: DealerService,
     private router: Router,
     private dialog: MatDialog,
-    private route:ActivatedRoute
-  ) {
+    private route:ActivatedRoute,
+    
+  ) 
+  
+  {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
     this.getDealers();
   }
 
+ 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
     return day !== 0 && day !== 6;
   };
+
+  
+
 
   ngOnInit(): void {
     this.getDealers();
@@ -80,7 +120,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
 
         this.dataSource.sort = this.sort;
 
-        console.log(data);
+        //console.log(data);
       },
       (err) => {
         console.log(err);
@@ -93,25 +133,74 @@ export class DealerAuditSystemComponent implements AfterViewInit {
       dealerCode: ['', Validators.required],
       dealerName: ['', Validators.required],
       businessCenter: ['', Validators.required],
+      dealerCompanyName: ['', Validators.required],
       saleGroupSize: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       addressLine1: ['', Validators.required],
       addressLine2: ['', Validators.required],
+      
+      inceptionDate: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
       city: ['', Validators.required],
       zicode: ['', Validators.required],
       email: ['', Validators.required],
+
+      auditType: ['', Validators.required],
+      dateAssigned: ['', Validators.required],  
+      reasonAuditSelected: ['', Validators.required], 
+      reportLanguage:['',Validators.required],  
+      stateLegalLimitation:['',Validators.required],
+      noOfMonthsData: ['', Validators.required],
+      comments: ['', Validators.required],
     });
+
+   
   }
 
+  formDetails() {
+    const updateAssignment = {
+      "dealerCode": this.Dealer.dealerCode,
+      "dealerName": this.projectForm.value.dealerName,
+      "businessCenter": this.projectForm.value.businessCenter,
+      "dealerCompanyName": this.projectForm.value.dealerCompanyName,
+      "saleGroupSize": this.projectForm.value.saleGroupSize,
+      
+      "phoneNumber": this.projectForm.value.phoneNumber,
+      "addressLine1": this.projectForm.value.addressLine1,
+      "addressLine2":this.projectForm.value.country ,
+      "inceptionDate":this.projectForm.value.inceptionDate ,
+      "state": this.projectForm.value.state ,
+      "country": this.projectForm.value.country,
+      "city": this.projectForm.value.city,
+      "zicode": this.projectForm.value.zicode,
+      "email": this.projectForm.value.email,
+      "dateAssigned": this.projectForm.value.dateAssigned,
+      "reasonAuditSelected": this.projectForm.value.reasonAuditSelected,
+     "auditType": this.projectForm.value.auditType,
+      "reportLanguage": this.projectForm.value.reportLanguage,
+      "stateLegalLimitation": this.projectForm.value.stateLegalLimitation,
+      "noOfMonthsData": this.projectForm.value.noOfMonthsData,
+      "comments": this.projectForm.value.comments,
+    }
+    console.log(updateAssignment)
+    this.dealerService.setReviewSubmit(updateAssignment);
+    // this.service.updateProjectAssignment(updateAssignment).subscribe((data) => {
+    //   console.log(data);
+    //    this.tsmAlertService.showSuccess("Project Assignment Updated");
+    //    this.router.navigate(['./userlist/edituser']);
+    //  });
+  }
   getSingleDealer() {
     this.dealerService.getSingleDealer(this.dealerId).subscribe((data) => {
       this.Dealer = data;
-      console.log(this.Dealer.address.email);
+     // console.log(this.Dealer);
+      
+     // console.log(this.Dealer.address.email);
       this.projectForm.controls['dealerCode'].setValue(data.dealerCode);
       this.projectForm.controls['dealerName'].setValue(data.dealerName);
       this.projectForm.controls['businessCenter'].setValue(data.businessCenter);
+      this.projectForm.controls['dealerCompanyName'].setValue(data.dealerCompanyName);
       this.projectForm.controls['saleGroupSize'].setValue(data.saleGroupSize);
       this.projectForm.controls['phoneNumber'].setValue(
         data.address.phoneNumber
@@ -132,25 +221,36 @@ export class DealerAuditSystemComponent implements AfterViewInit {
 
   ngAfterViewInit() {}
 
+
+  reviewsubmit(){
+    this.formDetails();
+    this.dealerService.setDealerId(this.dealerId);
+  }
+
+
   onRowClicked(row: any, stepper: MatStepper) {
-    console.log('Row clicked: ', row);
+    //console.log('Row clicked: ', row);
     this.dealerId = row.dealerCode;
     console.log(this.dealerId);
     stepper.next();
+   
+    //this.dealerId1.next(this.dealerId);
+    
     this.getSingleDealer();
+
   }
   openDialog(): void {
-    // Open your popup dialog here
+   
     const dialogRef = this.dialog.open(SelectAuditorComponent, {
-      width:"90%",height:"90%"
-    
-      // Specify dialog options if needed
+      width: '90%',
+      height: '90%',
+
     });
 
-    // Handle dialog close event if necessary
-    dialogRef.afterClosed().subscribe(result => {
-      // Do something with the result
+    dialogRef.afterClosed().subscribe((result) => {
+
     });
+   
   }
 
   goToNextStep(stepper: MatStepper): void {
@@ -188,5 +288,6 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
+
 
 

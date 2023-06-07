@@ -81,6 +81,7 @@ export class AddAuditorComponent implements OnInit {
     const dummy = {
       userId: person.userId,
       firstName: person.firstName,
+      lastName: person.firstName,
       percentage: percentage,
     };
     this.dealerService.setAuditor(person);
@@ -100,6 +101,9 @@ export class AddAuditorComponent implements OnInit {
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     console.log('Total Percentage:', sum);
     if (sum == 100) {
+
+this.dealerService.setAuditor(this.temp);
+
       Swal.fire({
         position: 'top-end',
         icon: 'success',
