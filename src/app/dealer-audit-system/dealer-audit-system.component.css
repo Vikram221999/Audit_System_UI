@@ -115,7 +115,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 td {
   vertical-align: middle;
-  /* horizontal-align: left; */
+  /* horizontal-align: right;  */
 }
 
 .demo-table {
@@ -160,7 +160,7 @@ td {
 }
 
 .search-field {
-  width: 240px;
+  width: 220px;
   height: 48px;
   background-color: rgb(255, 255, 255);
    padding-bottom: 10px;
@@ -240,3 +240,4 @@ input {
   font-size: 14px;
   opacity: 5;
 }
+

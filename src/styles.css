@@ -73,29 +73,11 @@ html, body {
      .search-container {
      
       flex: 1;
-      margin-right : 20px;
+      margin-right : 40px;
      
     }
  
+    td {
+      align-items: center;
+    }
  
-
-    .white-text-input ::ng-deep .mat-input-element {
-      color: white;
-    }
-
-
-
-    .primary-theme {
-      background-color: blue;
-      color: white;
-    }
-    
-    .accent-theme {
-      background-color: green;
-      color: white;
-    }
-    
-    .warn-theme {
-      background-color: red;
-      color: white;
-    }
