@@ -19,7 +19,7 @@ html, body {
     font-weight: 500;
   }
   
-  p, span, a, li, button, input, label {
+  p, span, a, li, button, label {
     font-family: 'Graphik-regular',sans-serif;
     font-size: 14px;
     opacity: 5;

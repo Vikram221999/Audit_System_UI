@@ -150,7 +150,7 @@ td {
   overflow: hidden;
 }
 
-.mat-elevation-z8 {
+.mat-elevation-z4 {
   overflow: hidden;
 }
 
@@ -164,6 +164,7 @@ td {
   height: 48px;
   background-color: rgb(255, 255, 255);
    padding-bottom: 10px;
+   border-bottom: #3d4f99;
 }
 
 .container1,.container1-h4 {
@@ -207,7 +208,8 @@ td {
 }
 
 .tablehead {
-  background-color: #627ed867;
+  background-color: #3d4f99;
+ 
   
   font-family: 'Montserrat', 'Open Sans', sans-serif,bold;
   font-weight: 550;
@@ -226,3 +228,15 @@ border-bottom: 1px solid #ccc;
   color: #000000;
 }
 
+
+.header-content:hover .search-field {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+input {
+  color: #000;
+  font-family: 'Graphik-regular',sans-serif;
+  font-size: 14px;
+  opacity: 5;
+}
