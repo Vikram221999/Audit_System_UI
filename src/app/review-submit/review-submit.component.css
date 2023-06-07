@@ -1,28 +1,28 @@
 .container1,.container1-h4 {
     width: 670px; /* Set the desired width of the container */
-    height: 516px; /* Set the desired height of the container */
+    height: 450px; /* Set the desired height of the container */
     padding: 14px;
     margin: 14px;
     box-sizing: border-box;
     font-size: larger;
-    color: #3d4f99;
+    color: #000000;
   }
   
   .container2, .container2-h4{
     width: 550px; /* Set the desired width of the container */
-    height: 250px; /* Set the desired height of the container */
+    height: 200px; /* Set the desired height of the container */
     padding: 14px;
     margin: 14px;
     box-sizing: border-box;
     font-size: larger;
-    color: #3d4f99;
+    color:  #000000;
   }
   .container3, .container3-h4{
     width: 550px; /* Set the desired width of the container */
-    height: 250px; /* Set the desired height of the container */
+    height: 200px; /* Set the desired height of the container */
     padding: 14px;
     margin: 14px;
     box-sizing: border-box;
     font-size: larger;
-    color: #3d4f99;
+    color:  #000000;
   }
