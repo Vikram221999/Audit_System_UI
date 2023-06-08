@@ -51,33 +51,12 @@ export class AddAuditorComponent implements OnInit {
       this.projectForm.addControl('percentage_' + i, new FormControl(null));
     }
   }
-  // handlePercentage(person: User, index: number) {
-  //   const percentage = this.projectForm.get('percentage').value;
-  //   const dummy = {
-  //     "userId": person.userId,
-  //     "firstName": person.firstName,
-  //     "percentage": percentage,
-  //   };
-  //   this.dealerService.setAuditor(person);
-  //   this.temp.push(dummy);
-  //   console.log(this.temp);
-  //   this.projectForm.get('percentage').reset(); // Reset the percentage control
-  //   const sum = this.temp.reduce((accumulator, currentValue) => accumulator + currentValue.percentage, 0);
-  //   console.log('Total Percentage:', sum);
-  //   if (sum === 100) {
-  //     // Perform necessary actions when the sum is 100
-  //   } else {
-  //     console.warn(23234);
-  //   }
-  // }
-
+  
   handlePercentage(person: User, index: number) {
-    // if(this.temp.length<=2){
-
+  
     const percentage = this.projectForm.get('percentage').value;
 
     this.temp.splice(index, 1);
-
     const dummy = {
       userId: person.userId,
       firstName: person.firstName,
@@ -177,20 +156,4 @@ this.dealerService.setAuditor(this.temp);
     });
   }
 
-  // dummy(person: any, index: number): void {
-  //   const percentage = this.projectForm.get('percentage')?.value;
-  //   if (percentage !== null && percentage !== '') {
-  //     const firstName = person.firstName;
-  //     console.log(index);
-  //     console.log(firstName);
-  //     console.log(percentage);
-  //     const dummy = {
-  //       firstName: firstName,
-  //       percentage: percentage,
-  //     };
-  //     this.temp.push(dummy);
-
-  //     console.log(this.temp);
-  //   }
-  // }
 }

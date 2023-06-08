@@ -225,3 +225,15 @@ border-bottom: 1px solid #ccc;
 .mat-icon  {
   color: #000;
 }
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.mat-elevation-z4{
+  cursor: pointer;
+}
