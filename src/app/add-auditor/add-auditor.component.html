@@ -19,7 +19,7 @@
 <div style="padding-left: 15%; padding-top: 5%;">
   <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
     <input  matInput value="{{person.firstName}}"   class="input-bold-placeholder">
-    <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+    <button mat-button matSuffix mat-icon-button (click)="openDialog (i)">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
@@ -38,7 +38,7 @@
     <!-- <h3>{{person.firstName}}</h3> -->
     <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
       <input matInput placeholder="Lead" >
-      <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+      <button mat-button matSuffix mat-icon-button (click)="openDialog(0)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
@@ -49,7 +49,7 @@
   </div>
 
 <div style="padding-left: 40%; padding-top: 5%;">
-  <button  mat-raised-button color="primary" (click)="openDialog()">Add Auditor</button>
+  <button  mat-raised-button color="primary" (click)="openDialog(0)">Add Auditor</button>
 </div>
 </ng-container>
   <div class="mat-elevation-z4">

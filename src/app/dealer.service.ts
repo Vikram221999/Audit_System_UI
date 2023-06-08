@@ -11,17 +11,33 @@ import { User } from "./entity/user";
   })
 
   export class DealerService{
-    // private auditor :BehaviorSubject<any> = new BehaviorSubject(null);
+    private user :BehaviorSubject<any> = new BehaviorSubject(null);
+    private dealerId :BehaviorSubject<any> = new BehaviorSubject(0);
+    private reviewSubmit :BehaviorSubject<any> = new BehaviorSubject(null);
 
-    // getAuditor(): Observable<User[]> {
-    //   return this.auditor;
-    // }
-    // setAuditor(auditor: User) {
-    //   return this.auditor.next(auditor);
-    // }
-    private baseURL:string = 'http://localhost:9091/dealer/';
+    getDealerId(): Observable<any> {
+      return this.dealerId;
+    }
+    setDealerId(dealerId: any) {
+      return this.dealerId.next(dealerId);
+    }
 
-    private baseURL1:string = 'http://localhost:9091/auditor/';
+    getReviewSubmit(): Observable<any> {
+      return this.reviewSubmit;
+    }
+    setReviewSubmit(reviewSubmit: any) {
+      return this.reviewSubmit.next(reviewSubmit);
+    }
+
+    getAuditor(): Observable<any[]> {
+      return this.user;
+    }
+    setAuditor(user: any) {
+      return this.user.next(user);
+    }
+    private baseURL:string = 'http://172.16.2.102:9091/dealer/';
+
+    private baseURL1:string = 'http://172.16.2.102:9091/auditor/';
     // [x: string]: any;
     getDealers(): Observable<Dealer[]> {
       return this.httpClient.get<Dealer[]>(this.baseURL + "/showAllDealer");
