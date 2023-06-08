@@ -39,6 +39,8 @@ export class SelectAuditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAuditors();
+
+    this.dataSource.sort = this.sort;
   }
 
   onRowClicked(row: any) {

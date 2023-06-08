@@ -19,6 +19,7 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
 import { ReviewSubmitComponent } from './review-submit/review-submit.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -51,7 +52,8 @@ import { ReviewSubmitComponent } from './review-submit/review-submit.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule     
+    ReactiveFormsModule  ,
+    MatTableModule   
 
   ],
   providers: [FormBuilder

@@ -1,3 +1,13 @@
 .mat-input-element::placeholder {
     font-weight: bold;
   }
+
+  .custom-toolbar {
+    background-color: #3782f3;
+    color: #ffffff;
+  }
+
+  .container-style{
+    padding-left:-100px;
+  }
+  
