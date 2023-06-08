@@ -5,8 +5,8 @@ import { Audit } from "./audit"
 export class Dealer{
 
     dealerCode!:number;
- dealerName!:string;
-  businessCenter!:number;
+    dealerName!:string;
+    businessCenter!:number;
 	saleGroupSize!:number;
     auditAllocation!:AuditAllocation[];
     audit!:Audit[];

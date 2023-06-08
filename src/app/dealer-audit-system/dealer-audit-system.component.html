@@ -39,10 +39,10 @@
               <br />
               <div fxLayout="column" fxLayoutAlign="start center" class="search-container">
                 <mat-form-field class="search-field">
-                  <input matInput placeholder="Search by Dealer Code" (input)="applyFilter($event, 'dealerCode')" />
-                  <button mat-icon-button matSuffix>
+                  <input matInput  (input)="applyFilter($event, 'dealerCode')" placeholder="Search by Dealer Code"/>
+                  <!-- <button mat-icon-button matSuffix>
                     <mat-icon>sort</mat-icon>
-                  </button>
+                  </button> -->
                 </mat-form-field>
               </div>
             </th>
@@ -66,9 +66,9 @@
                       placeholder="Search by Business Center"
                       (input)="applyFilter($event, 'businessCenter')"
                     />
-                    <button mat-icon-button matSuffix>
+                    <!-- <button mat-icon-button matSuffix>
                       <mat-icon>sort</mat-icon>
-                    </button>
+                    </button> -->
                   </mat-form-field>
                 </div>
               </th>
@@ -93,9 +93,9 @@
                       placeholder="Search by Dealer Name"
                       (input)="applyFilter($event, 'dealerName')"
                     />
-                    <button mat-icon-button matSuffix>
+                    <!-- <button mat-icon-button matSuffix>
                       <mat-icon>sort</mat-icon>
-                    </button>
+                    </button> -->
                   </mat-form-field>
                 </div>
               </th>
@@ -120,9 +120,9 @@
                       placeholder="Search by Dealer State"
                       (input)="applyFilter($event, 'address')"
                     />
-                    <button mat-icon-button matSuffix>
+                    <!-- <button mat-icon-button matSuffix>
                       <mat-icon>sort</mat-icon>
-                    </button>
+                    </button> -->
                   </mat-form-field>
                 </div>
               </th>
@@ -583,11 +583,11 @@
                     class="small-input-field"
                     appearance="outline"
                   >
-                    <mat-label>Start Date</mat-label>
+                    <!-- <mat-label>Start Date</mat-label> -->
                     <input
                       matInput
                       [formControlName]="'assignmentStartDate'"
-                      placeholder="assignmentStartDate"
+                      placeholder="Pick a date"
                       [matDatepicker]="picker3"
                     />
                     <mat-datepicker-toggle
@@ -843,8 +843,7 @@
     <mat-toolbar class="md-tall md-hue-3" layout-align="end end">
       <div class="md-toolbar-tools" layout layout-padding>
         <div layout="column" layout-padding>
-          <span class="md-body-2">Vikram</span>
-          <span class="md-caption">sdg</span>
+          <span class="md-body-2">FCA</span>
         </div>
         <span flex></span>
       </div>
