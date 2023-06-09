@@ -40,6 +40,8 @@ export class AddAuditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup();
+
+    
   }
   formGroup() {
     this.projectForm = this._formBuilder.group({
