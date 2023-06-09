@@ -19,6 +19,10 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
 import { ReviewSubmitComponent } from './review-submit/review-submit.component';
+import { MatTableModule } from '@angular/material/table';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+
+
 import { DatePipe } from '@angular/common';
 
 
@@ -52,13 +56,15 @@ import { DatePipe } from '@angular/common';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule     
+    ReactiveFormsModule  ,
+    MatTableModule   ,
+    
 
   ],
   providers: [FormBuilder,
-    DatePipe
-],
-  bootstrap: [AppComponent]
+    DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-US' }],
+  bootstrap: [AppComponent],
+  
   
   
  

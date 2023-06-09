@@ -1,3 +1,285 @@
-.mat-input-element::placeholder {
-    font-weight: bold;
-  }
+
+
+
+.example-container {
+  width: auto;
+  height: 650px;
+
+  
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 10%;
+  align-items: first baseline;
+  justify-content: center;
+  
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.example-stepper {
+  margin-top: 8px;
+  border: 10%;
+  border-color: black;
+}
+
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+  
+}
+/* .example-full-width{
+  height: 5%;
+} */
+
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-block-color: #030303;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: #3782f3;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+
+
+.container {
+  width: 2000px;
+  height: auto;
+  /* width: auto;
+  height: auto; */
+  background-color: #ffffff; /* Set the background color of the container */
+  border: 1px solid #000; /* Set the border of the container */
+  padding: 20px; /* Set the padding inside the container */
+  margin: 0 auto; /* Center the container horizontally */
+ 
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+
+}
+
+
+.dateStyle {
+  background-color: #ddd
+}
+
+
+
+
+
+.mat-form-field-appearance-outline {
+  padding: -53em 0 1em 0;
+}
+
+
+
+td {
+  vertical-align: middle;
+  /* horizontal-align: right;  */
+}
+
+.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #3782f3;
+}
+
+.table-header {
+  font-size: medium;
+  color: rgb(59, 59, 59);
+}
+
+.table-cell {
+  font-size: medium;
+}
+.mat-form-field {
+  padding: 5px;
+}
+
+.small-input-field {
+  width: 200px;
+  height: 0px;
+  font-size: 12px;
+}
+
+.mat-label {
+  font-size: small;
+}
+
+.example-container {
+  overflow: hidden;
+}
+
+.mat-elevation-z4 {
+  overflow: hidden;
+}
+
+.dba {
+  width: 19%;
+  margin: 5px 0 22px 7px;
+}
+
+.search-field {
+  width: 220px;
+  height: 48px;
+  background-color: rgb(255, 255, 255);
+   padding-bottom: 10px;
+   border-bottom: #3d4f99;
+}
+
+.container1,.container1-h4 {
+  width: 670px; /* Set the desired width of the container */
+  height: 516px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
+}
+
+.container2, .container2-h4{
+  width: 550px; /* Set the desired width of the container */
+  height: 250px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
+}
+.container3, .container3-h4{
+  width: 550px; /* Set the desired width of the container */
+  height: 250px; /* Set the desired height of the container */
+  padding: 14px;
+  margin: 14px;
+  box-sizing: border-box;
+  font-size: larger;
+  color: #3d4f99;
+}
+
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* .tablehead {
+  background-color: #62c6ff;
+ 
+  
+  font-family: 'Montserrat', 'Open Sans', sans-serif,bold;
+  font-weight: 550;
+  font-size: 14px;
+  padding-bottom: 18px;
+color: #ffffff;
+padding: 10px;
+text-align: left;
+border-bottom: 1px solid #ccc;
+} */
+
+
+
+
+.mat-icon  {
+  color: #000000;
+}
+
+
+.header-content:hover .search-field {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+input {
+  color: #000;
+  font-family: 'Graphik-regular',sans-serif;
+  font-size: 14px;
+  opacity: 5;
+}
+
+.search-field {
+  width: 90px; /* Adjust the width as desired */
+  margin-right: 15px;
+}
+
+.percentage-field {
+  width: 80px; /* Adjust the width as desired */
+  margin-left: 15px;
+}
+
+.custom-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%; /* Adjust the width as desired */
+  margin: 0 auto; /* Center align the toolbar */
+}
+
+.toolbar-title {
+  margin-left: 15px; /* Add left margin for the title */
+}
+
+.work-allocation {
+  margin-left: 40px; /* Add left margin for the work allocation */
+}
+
+
+.custom-toolbar {
+  background-color: #3782f3;
+  color: #ffffff;
+  width: 100%;
+}
+
+.parent-container {
+  height: 250px; /* Set a specific height for the parent container */
+}
+
+.flex-container {
+  height: 100%; /* Set the flex container to occupy the full height of the parent container */
+  display: flex;
+  /* Additional flex properties and styles */
+}

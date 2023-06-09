@@ -2,7 +2,7 @@ import { Dealer } from './../entity/dealer';
 import { DealerService } from './../dealer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
 
 
 import {
@@ -16,6 +16,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+ 
   UntypedFormBuilder,
   UntypedFormGroup,
   ValidationErrors,
@@ -25,7 +26,7 @@ import {
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Observable, map } from 'rxjs';
 
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { MatDialog } from '@angular/material/dialog';
@@ -60,7 +61,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   assignAuditor:any;
   language: String[] = ['English', 'Tamil', 'Hindi'];
    dealerId!: number;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  
   selectedRowData: any;
   dealerss!: Dealer;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -83,7 +85,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   })
 
 
-  
+
+  minDate!: Date;
   dataSource!: MatTableDataSource<Dealer>;
   searchName!:string;
   dateAssignedControl = new FormControl();
@@ -97,17 +100,19 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     private router: Router,
     private dialog: MatDialog,
     private route:ActivatedRoute,
+  
+   
     private datepipe:DatePipe
 
   ) 
   
   {
+   
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
     this.getDealers();
   }
-
  
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -121,18 +126,73 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   ngOnInit(): void {
     this.getDealers();
     this.formGroup();
+
+   this.dataSource.sort = this.sort;
+    
+ 
     console.warn(this.firstFormGroup.valid)
   }
+
+// applyFilter(event: any): void {
+//   const filterValue = event.target.value;
+//   this.dataSource.filter = filterValue.trim().toLowerCase();
+// }
+
+// applyFilter(event: Event, columnName: string): void {
+//   const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+//   this.dataSource.filter = filterValue.substring(0,filterValue.length-1);
+
+//   this.dataSource.filterPredicate = (data: any) => {
+//     const columnValue = data[columnName].toString().toLowerCase();
+//     return columnValue.includes(filterValue);
+//   };
+// }
+
+
+filterValues: { [key: string]: string } = {};
+applyFilter(event: Event, columnName: string): void {
+  const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  this.filterValues[columnName] = filterValue;
+
+  this.dataSource.filterPredicate = (data: any) => {
+    let match = true;
+    for (const key in this.filterValues) {
+      if (this.filterValues.hasOwnProperty(key)) {
+        const columnValue = data[key]?.toString().toLowerCase();
+        const filterVal = this.filterValues[key];
+        if (columnValue && !columnValue.includes(filterVal)) {
+          match = false;
+          break;
+        }
+      }
+    }
+    return match;
+  };
+
+  this.dataSource.filter = 'filtering';
+}
+
+
+
+
+
+
+
+
 
   clickedRows = new Set<any>();
   getDealers() {
     this.dealerService.getDealers().subscribe(
       (data) => {
+        console.log(data);
         this.dataSource = new MatTableDataSource(data);
 
         this.dataSource.sort = this.sort;
 
         //console.log(data);
+
+
       },
       (err) => {
         console.log(err);
