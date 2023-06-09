@@ -1,16 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 <mat-drawer-container class="example-container" autosize>
   <!-- Side navigation -->
   <mat-drawer mode="side" #drawer>
     <!-- Side navigation content -->
     <div class="side-nav-content">
-      <h4>Navigation</h4>
+      <h4 style=" font-family: 'Graphik-regular',sans-serif; font-size: x-large; font-weight: 600; color: rgb(29, 109, 199);">Dealer Audit System</h4>
       <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-        <li><a routerLink="/settings">Settings</a></li>
+        <li><a routerLink="/" > <i class="fas fa-home"></i>  Home</a></li>
+        <li><a routerLink="/dashboard"> <i class="fas fa-chart-bar"></i>  Dashboard</a></li>
+        <li><a routerLink="/profile"><i class="fas fa-user"></i>  Profile</a></li>
+        <li><a routerLink="/settings"> <i class="fas fa-cog"></i> Settings</a></li>
       </ul>
     </div>
+    <button mat-icon-button (click)="drawer.close()" class="close-button">
+      <mat-icon>cancel</mat-icon>
+    </button>
   </mat-drawer>
  
 
@@ -21,7 +26,7 @@
       <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h3>DEALER AUDIT SYSTEM</h3>
+      <h3> DEALER AUDIT SYSTEM</h3>
     </mat-toolbar>
   </div>
   <div>
@@ -395,7 +400,7 @@
 
             <table class="example-full-width" cellspacing="0">
               <tr>
-                <td class="border-2 m-3">
+                <!-- <td class="border-2 m-3">
                   <label for="email"
                     ><b
                       >Address Line 1 <strong style="color: red">*</strong></b
@@ -413,8 +418,34 @@
                       [formControlName]="'addressLine1'"
                     />
                   </mat-form-field>
-                  <!-- <input type="text" placeholder="addressLine1.value"[formControlName]="'addressLine1'" required> -->
+                
+                </td> -->
+
+
+                <td>
+                  <label for="email"><b>Address Line 1</b></label>
+                  <br />
+                  <mat-form-field
+                    class="small-input-field"
+                    appearance="outline"
+                  >
+                    <input
+                      matInput
+                      placeholder="addressLine1.value"
+                      [formControlName]="'addressLine1'"
+                    />
+                  </mat-form-field>
+                  <!-- <input type="text" placeholder="addressLine2.value" [formControlName]="'addressLine2'" required> -->
                 </td>
+                "
+                    
+                 
+                  <!-- <input type="text" placeholder="state.value"[formControlName]="'state'" required> -->
+                
+
+
+
+
                 <td>
                   <label for="email"><b>Address Line 2</b></label>
                   <br />
@@ -688,24 +719,21 @@
               </div>
             
           </mat-step>
-        <mat-step>
+        <!-- <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="button-container">
             <button matStepperPrevious class="back-button">Back</button>
             <button  class="next-button">Submit</button>
           </div>
-        </mat-step>
+        </mat-step> -->
       </mat-stepper>
   </div>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-toolbar class="md-tall md-hue-3" layout-align="end end">
       <div class="md-toolbar-tools" layout layout-padding>
-        <div layout="column" layout-padding>
-          <span class="md-body-2">Vikram</span>
-          <span class="md-caption">sdg</span>
-        </div>
+       
         <span flex></span>
       </div>
     </mat-toolbar>

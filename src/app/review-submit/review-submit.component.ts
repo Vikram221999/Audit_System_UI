@@ -44,8 +44,8 @@ console.log(this.auditor);
   
 }
  
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
+
+
+

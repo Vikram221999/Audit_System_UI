@@ -30,6 +30,35 @@ export class SelectAuditorComponent implements OnInit {
     'description',
   ];
 
+
+
+  filterValues: { [key: string]: string } = {};
+  applyFilter(event: Event, columnName: string): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.filterValues[columnName] = filterValue;
+  
+    this.dataSource.filterPredicate = (data: any) => {
+      let match = true;
+      for (const key in this.filterValues) {
+        if (this.filterValues.hasOwnProperty(key)) {
+          const columnValue = data[key]?.toString().toLowerCase();
+          const filterVal = this.filterValues[key];
+          if (columnValue && !columnValue.includes(filterVal)) {
+            match = false;
+            break;
+          }
+        }
+      }
+      return match;
+    };
+  
+    this.dataSource.filter = 'filtering';
+  }
+  
+
+
+
+
   constructor(
     private dealerService: DealerService,
     private router: Router,
@@ -39,6 +68,8 @@ export class SelectAuditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAuditors();
+
+    this.dataSource.sort = this.sort;
   }
 
   onRowClicked(row: any) {

@@ -193,8 +193,4 @@ this.dealerService.setAuditor(this.temp);
   //     console.log(this.temp);
   //   }
   // }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437

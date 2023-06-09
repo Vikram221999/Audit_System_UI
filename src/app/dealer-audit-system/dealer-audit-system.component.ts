@@ -2,7 +2,7 @@ import { Dealer } from './../entity/dealer';
 import { DealerService } from './../dealer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
 
 
 import {
@@ -15,6 +15,7 @@ import {
 import {
   FormBuilder,
   FormControl,
+  FormGroup,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
@@ -65,6 +66,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'state',
   ];
 
+  
+
   dealerId1 !: any ;
   // =this.dealerService.getDealerId();
 
@@ -74,7 +77,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   })
 
 
-  
+
+  minDate!: Date;
   dataSource!: MatTableDataSource<Dealer>;
   searchName!:string;
   dateAssignedControl = new FormControl();
@@ -88,10 +92,13 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     private router: Router,
     private dialog: MatDialog,
     private route:ActivatedRoute,
+    private dateAdapter: DateAdapter<Date>
+   
     
   ) 
   
   {
+   
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
@@ -173,11 +180,9 @@ applyFilter(event: Event, columnName: string): void {
 
         this.dataSource.sort = this.sort;
 
-<<<<<<< HEAD
         //console.log(data);
-=======
-        
->>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
+
+
       },
       (err) => {
         console.log(err);

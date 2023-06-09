@@ -271,4 +271,15 @@ input {
 .custom-toolbar {
   background-color: #3782f3;
   color: #ffffff;
+  width: 100%;
+}
+
+.parent-container {
+  height: 250px; /* Set a specific height for the parent container */
+}
+
+.flex-container {
+  height: 100%; /* Set the flex container to occupy the full height of the parent container */
+  display: flex;
+  /* Additional flex properties and styles */
 }

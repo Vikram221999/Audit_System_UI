@@ -20,7 +20,8 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
 import { ReviewSubmitComponent } from './review-submit/review-submit.component';
 import { MatTableModule } from '@angular/material/table';
-import { ReviewSubmitComponent } from './review-submit/review-submit.component';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+
 
 
 
@@ -55,12 +56,13 @@ import { ReviewSubmitComponent } from './review-submit/review-submit.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule  ,
-    MatTableModule   
+    MatTableModule   ,
+    
 
   ],
-  providers: [FormBuilder
-],
-  bootstrap: [AppComponent]
+  providers: [FormBuilder, { provide: MAT_DATE_LOCALE, useValue: 'en-US' }],
+  bootstrap: [AppComponent],
+  
   
   
  
