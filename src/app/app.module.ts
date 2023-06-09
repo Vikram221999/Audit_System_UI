@@ -19,6 +19,7 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
 import { ReviewSubmitComponent } from './review-submit/review-submit.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -54,7 +55,8 @@ import { ReviewSubmitComponent } from './review-submit/review-submit.component';
     ReactiveFormsModule     
 
   ],
-  providers: [FormBuilder
+  providers: [FormBuilder,
+    DatePipe
 ],
   bootstrap: [AppComponent]
   

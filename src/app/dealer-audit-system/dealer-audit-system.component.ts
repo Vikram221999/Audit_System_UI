@@ -32,6 +32,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
 import { User } from '../entity/user';
 import { DatePipe } from '@angular/common';
+import { Audit } from '../entity/audit';
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -46,6 +47,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   filteredItems: string[] = [];
   searchTerm: string = '';
   bool=true;
+  audit!:any;
 
 [x: string]: any;
 
@@ -69,6 +71,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'state',
   ];
 
+
+  Dealer1: any;
+  auditor: any[] = [];
   dealerId1 !: any ;
   // =this.dealerService.getDealerId();
 
@@ -92,7 +97,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     private router: Router,
     private dialog: MatDialog,
     private route:ActivatedRoute,
-    
+    private datepipe:DatePipe
+
   ) 
   
   {
@@ -169,14 +175,13 @@ export class DealerAuditSystemComponent implements AfterViewInit {
    
   }
 
-  formDetails() {
+  async formDetails(stepper:MatStepper) {
     const updateAssignment = {
       "dealerCode": this.Dealer.dealerCode,
       "dealerName": this.projectForm1.value.dealerName,
       "businessCenter": this.projectForm1.value.businessCenter,
       "dealerCompanyName": this.projectForm1.value.dealerCompanyName,
       "saleGroupSize": this.projectForm1.value.saleGroupSize,
-      
       "phoneNumber": this.projectForm1.value.phoneNumber,
       "addressLine1": this.projectForm1.value.addressLine1,
       "addressLine2":this.projectForm1.value.country ,
@@ -193,8 +198,10 @@ export class DealerAuditSystemComponent implements AfterViewInit {
       "stateLegalLimitation": this.projectForm2.value.stateLegalLimitation,
       "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
       "comments": this.projectForm2.value.comments,
+      
     }
-    this.bool=false;
+    this.onRowClicked1(stepper)
+    // await new Promise(resolve => setTimeout(resolve, 250)); 
     console.log(updateAssignment)
     this.dealerService.setReviewSubmit(updateAssignment);
     // this.service.updateProjectAssignment(updateAssignment).subscribe((data) => {
@@ -202,6 +209,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     //    this.tsmAlertService.showSuccess("Project Assignment Updated");
     //    this.router.navigate(['./userlist/edituser']);
     //  });
+    await new Promise(resolve => setTimeout(resolve, 250)); 
+    this.bool=false;
+
   }
   getSingleDealer() {
     this.dealerService.getSingleDealer(this.dealerId).subscribe((data) => {
@@ -234,12 +244,10 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   ngAfterViewInit() {}
 
 
-  reviewsubmit(){
-    this.formDetails();
+  reviewsubmit(stepper:MatStepper){
+    this.formDetails(stepper);
     this.dealerService.setDealerId(this.dealerId);
   }
-
-
 
   async onRowClicked(row: any, stepper: MatStepper) {
     //console.log('Row clicked: ', row);
@@ -253,15 +261,13 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     
     this.getSingleDealer();
     this.bool=true
-    
-
   }
+
   openDialog(): void {
    
     const dialogRef = this.dialog.open(SelectAuditorComponent, {
       width: '90%',
       height: '90%',
-
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -269,6 +275,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     });
    
   }
+
 
   goToNextStep(stepper: MatStepper): void {
     stepper.next();
@@ -298,24 +305,75 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   }
   }
 
+  onSubmit(){
+    this.dealerService.getReviewSubmit().subscribe((data)=>
+    {
+    this.Dealer1=data;
+console.log(this.Dealer);
+    });
+    this.dealerService.getAuditor().subscribe((data)=>
+    {
+    this.auditor=data;
+console.log(this.auditor);
+    });
+
+    this.Dealer1={
+      "dealerCode": this.Dealer.dealerCode,
+      "dealerName": this.projectForm1.value.dealerName,
+      "businessCenter": this.projectForm1.value.businessCenter,
+      "dealerCompanyName": this.projectForm1.value.dealerCompanyName,
+      "saleGroupSize": this.projectForm1.value.saleGroupSize,
+      "phoneNumber": this.projectForm1.value.phoneNumber,
+      "addressLine1": this.projectForm1.value.addressLine1,
+      "addressLine2":this.projectForm1.value.country ,
+      "inceptionDate":this.projectForm1.value.inceptionDate ,
+      "state": this.projectForm1.value.state ,
+      "country": this.projectForm1.value.country,
+      "city": this.projectForm1.value.city,
+      "zicode": this.projectForm1.value.zicode,
+      "email": this.projectForm1.value.email,
+      "dateAssigned": this.projectForm2.value.dateAssigned,
+      "reasonAuditSelected": this.projectForm2.value.reasonAuditSelected,
+     "auditType": this.projectForm2.value.auditType,
+      "reportLanguage": this.projectForm2.value.reportLanguage,
+      "stateLegalLimitation": this.projectForm2.value.stateLegalLimitation,
+      "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+      "comments": this.projectForm2.value.comments,
+      "AuditorWorkAllocation":this.auditor
+    }
+
+    const audit ={
+      "dateAssigned": this.datepipe.transform( this.projectForm2.value.dateAssigned,"yyyy-MM-dd"),
+     "auditType": this.projectForm2.value.auditType,
+      "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+      "comments": this.projectForm2.value.comments,
+      
+    }
+    const audit11={
+      "audit":audit,
+      "AuditorWorkAllocation":this.auditor
+    }
+    console.log(audit11);
+    this.dealerService.createAuditor(this.Dealer1.dealerCode,audit11).subscribe(data=>{
+      console.log(data);
+      
+    })
+    
+
+
+
+  }
   dummy(){
     
   }
   async onRowClicked1( stepper: MatStepper){
     this.bool=false
     await new Promise(resolve => setTimeout(resolve, 250)); 
-   
     console.log(this.dealerId);
-    stepper.next();
-   
+    stepper.next(); 
     //this.dealerId1.next(this.dealerId);
-    
-   
     this.bool=true
-
   }
-
-
 }
 
 export interface PeriodicElement {

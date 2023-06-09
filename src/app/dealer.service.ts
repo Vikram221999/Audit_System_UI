@@ -38,6 +38,7 @@ import { User } from "./entity/user";
     private baseURL:string = 'http://172.16.2.102:9091/dealer/';
 
     private baseURL1:string = 'http://172.16.2.102:9091/auditor/';
+    private baseURL2:string = 'http://172.16.2.102:9091/audit/';
     // [x: string]: any;
     getDealers(): Observable<Dealer[]> {
       return this.httpClient.get<Dealer[]>(this.baseURL + "/showAllDealer");
@@ -50,6 +51,11 @@ import { User } from "./entity/user";
     getAuditors(): Observable<any[]> {
       return this.httpClient.get<any[]>(this.baseURL1 + "/showAllAuditors");
     }
+
+   
+    createAuditor( dealerCode:any,data : any): Observable < any > {
+      return this.httpClient.post<any>(this.baseURL2 + `saveAudit/`+`${dealerCode}`, data);
+  }
    
    constructor(private httpClient: HttpClient) { }
 

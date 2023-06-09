@@ -7,6 +7,12 @@
 
   
 }
+.example-container1 {
+  width: auto;
+  height: 650px;
+
+  
+}
 
 .example-sidenav-content {
   display: flex;

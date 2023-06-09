@@ -38,13 +38,19 @@ export class SelectAuditorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.dummy)
     this.getAuditors();
   }
 
   onRowClicked(row: any) {
     console.log('Row clicked: ', row);
     this.user = row;
-
+    console.log(this.user.userId)
+    const index = this.dummy.findIndex((user: any) => user.userId !== this.user.userId);
+    if (index !== -1) {
+      console.log(234567)
+      this.dummy.splice(index, 1);
+    }
     this.dialogRef.close(row);
 
   }
@@ -52,8 +58,11 @@ export class SelectAuditorComponent implements OnInit {
     this.dialogRef.close();
   }
   getAuditors() {
+
     this.dealerService.getAuditors().subscribe(
       (data) => {
+        // this.dummy.(this.user)
+        console.log(this.dummy)
         if (this.dummy.length > 0) {
           data = data.filter((item: any) =>
             !this.dummy.some((dummyItem: any) =>

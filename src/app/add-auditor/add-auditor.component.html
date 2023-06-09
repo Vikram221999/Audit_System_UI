@@ -19,7 +19,7 @@
 <div style="padding-left: 15%; padding-top: 5%;">
   <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
     <input  matInput value="{{person.firstName}}"   class="input-bold-placeholder">
-    <button mat-button matSuffix mat-icon-button (click)="openDialog (i)">
+    <button mat-button matSuffix mat-icon-button (click)="openDialogs (i,person)">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
