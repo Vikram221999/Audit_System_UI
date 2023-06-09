@@ -1,21 +1,11 @@
-<mat-toolbar color="primary">
-    <h3 style="padding-left: 15%;">Auditor</h3>
-    <h3 style="padding-left: 40%;">Work Allocation % </h3>
-    
-
-    <mat-drawer-container class="example-container" autosize></mat-drawer-container>
- 
-  </mat-toolbar>
-
-
-<!-- <h3>{{userName}}</h3> -->
-
+<mat-toolbar class="custom-toolbar" fxLayout="row" fxLayoutAlign="center center">
+  <h3 style="padding-left: 15%;">Auditor</h3>
+  <h3 style="padding-left: 40%;">Work Allocation %</h3>
+</mat-toolbar>
 
 <span></span>
-<ng-container *ngIf = "users!= null">
-  <form [formGroup]="projectForm"  >
-<ng-container *ngFor="let person of users; let i = index">
 
+<<<<<<< HEAD
 <div style="padding-left: 15%; padding-top: 5%;">
   <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
     <input  matInput value="{{person.firstName}}"   class="input-bold-placeholder">
@@ -29,32 +19,57 @@
   </mat-form-field>
   <!-- <button (click)="dummy(person, i)">Save</button> -->
 </div>
+=======
+<ng-container *ngIf="users != null">
+  <form [formGroup]="projectForm">
+    <ng-container *ngFor="let person of users; let i = index">
+      <div style="display: flex; align-items: center; padding-right: 95%; padding-top: 1%;width:70;">
+        <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15"  style="width:70" appearance="outline">
+          <input matInput value="{{ person.firstName }}" class="input-bold-placeholder">
+          <button mat-button matSuffix mat-icon-button (click)="openDialog(0)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+>>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
 
+        <mat-form-field style="padding-left: 1%" class="fuse-mat-no-subscript md:w-60 md:ml-15 w-80" appearance="outline">
+          <input type="number" matInput placeholder="Percentage" [formControlName]="'percentage'" (blur)="handlePercentage(person, i)">
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </form>
 </ng-container>
-</form>
-</ng-container>
-<ng-container *ngIf = "users.length < 2 " > 
-  <div style="padding-left: 15%; padding-top: 5%;">
-    <!-- <h3>{{person.firstName}}</h3> -->
+
+<ng-container *ngIf="users.length < 2">
+  <div style="display: flex; align-items: center; padding-right: 80%;padding-left:10% ; padding-top: 1%;">
     <mat-form-field class="fuse-mat-no-subscript md:w-60 w-80 md:mr-0 sm:mr-15" appearance="outline">
+<<<<<<< HEAD
       <input matInput placeholder="Lead" >
+=======
+      <input matInput placeholder="Lead">
+>>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
       <button mat-button matSuffix mat-icon-button (click)="openDialog(0)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
-    <mat-form-field  style="padding-left: 30%;"class="fuse-mat-no-subscript md:w-60 md:ml-15 w-80"
-    appearance="outline">
-      <input type="number" matInput placeholder="Percentage  " >
+
+    <mat-form-field style="padding-left: 10%;" class="fuse-mat-no-subscript md:w-60 md:ml-15 w-80" appearance="outline">
+      <input type="number" matInput placeholder="Percentage">
     </mat-form-field>
   </div>
 
+<<<<<<< HEAD
 <div style="padding-left: 40%; padding-top: 5%;">
   <button  mat-raised-button color="primary" (click)="openDialog(0)">Add Auditor</button>
 </div>
-</ng-container>
-  <div class="mat-elevation-z4">
-    <div mat-dialog-content>
-    </div>
-    <br>
-
+=======
+  <div style="padding-left: 11%; padding-bottom: 90%;">
+    <button mat-raised-button color="primary" (click)="openDialog(0)">Add Auditor</button>
   </div>
+>>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
+</ng-container>
+
+<div class="mat-elevation-z4">
+  <div mat-dialog-content></div>
+  <br>
+</div>

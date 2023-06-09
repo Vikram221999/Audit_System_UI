@@ -168,11 +168,16 @@ applyFilter(event: Event, columnName: string): void {
   getDealers() {
     this.dealerService.getDealers().subscribe(
       (data) => {
+        console.log(data);
         this.dataSource = new MatTableDataSource(data);
 
         this.dataSource.sort = this.sort;
 
+<<<<<<< HEAD
         //console.log(data);
+=======
+        
+>>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
       },
       (err) => {
         console.log(err);
@@ -340,7 +345,6 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
-
 
 
 

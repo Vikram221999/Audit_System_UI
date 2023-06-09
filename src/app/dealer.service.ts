@@ -21,6 +21,24 @@ import { User } from "./entity/user";
     setDealerId(dealerId: any) {
       return this.dealerId.next(dealerId);
     }
+<<<<<<< HEAD
+=======
+
+    getReviewSubmit(): Observable<any> {
+      return this.reviewSubmit;
+    }
+    setReviewSubmit(reviewSubmit: any) {
+      return this.reviewSubmit.next(reviewSubmit);
+    }
+
+    getAuditor(): Observable<any[]> {
+      return this.user;
+    }
+    setAuditor(user: any) {
+      return this.user.next(user);
+    }
+    private baseURL:string = 'http://localhost:9091/dealer/';
+>>>>>>> 27b7931e4bcb57bdc018f5f9f15de40c47f07437
 
     getReviewSubmit(): Observable<any> {
       return this.reviewSubmit;
