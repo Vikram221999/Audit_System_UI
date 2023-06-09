@@ -6,6 +6,7 @@ import { Audit } from "./entity/audit";
 
 import { BehaviorSubject } from 'rxjs';
 import { User } from "./entity/user";
+import { CreateAuditDto } from "./dealer-audit-system/dealer-audit-system.component";
 @Injectable({
     providedIn: 'root'
   })
@@ -53,8 +54,8 @@ import { User } from "./entity/user";
     }
 
    
-    createAuditor( dealerCode:any,data : any): Observable < any > {
-      return this.httpClient.post<any>(this.baseURL2 + `saveAudit/`+`${dealerCode}`, data);
+    createAuditor(data : CreateAuditDto): Observable < any > {
+      return this.httpClient.post<any>(this.baseURL2 + "/saveAudit", data);
   }
    
    constructor(private httpClient: HttpClient) { }

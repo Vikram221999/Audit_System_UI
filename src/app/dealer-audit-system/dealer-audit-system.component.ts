@@ -75,8 +75,9 @@ export class DealerAuditSystemComponent implements AfterViewInit {
 
 
   Dealer1: any;
-  auditor: any[] = [];
-  dealerId1 !: any ;
+  Dealer2!: CreateAuditDto;
+  auditor!: AuditorWorkAllocation[] ;
+  dealerId1 : any ;
   // =this.dealerService.getDealerId();
 
   
@@ -369,7 +370,7 @@ applyFilter(event: Event, columnName: string): void {
     this.dealerService.getReviewSubmit().subscribe((data)=>
     {
     this.Dealer1=data;
-console.log(this.Dealer);
+console.log(this.Dealer1);
     });
     this.dealerService.getAuditor().subscribe((data)=>
     {
@@ -377,7 +378,7 @@ console.log(this.Dealer);
 console.log(this.auditor);
     });
 
-    this.Dealer1={
+    this.Dealer2={
       "dealerCode": this.Dealer.dealerCode,
       "dealerName": this.projectForm1.value.dealerName,
       "businessCenter": this.projectForm1.value.businessCenter,
@@ -399,29 +400,26 @@ console.log(this.auditor);
       "stateLegalLimitation": this.projectForm2.value.stateLegalLimitation,
       "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
       "comments": this.projectForm2.value.comments,
-      "AuditorWorkAllocation":this.auditor
+      
+      "auditorWorkAllocation":this.auditor
     }
 
-    const audit ={
-      "dateAssigned": this.datepipe.transform( this.projectForm2.value.dateAssigned,"yyyy-MM-dd"),
-     "auditType": this.projectForm2.value.auditType,
-      "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
-      "comments": this.projectForm2.value.comments,
+    // const audit ={
+    //   "dateAssigned": this.datepipe.transform( this.projectForm2.value.dateAssigned,"yyyy-MM-dd"),
+    //  "auditType": this.projectForm2.value.auditType,
+    //   "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+    //   "comments": this.projectForm2.value.comments,
       
-    }
-    const audit11={
-      "audit":audit,
-      "AuditorWorkAllocation":this.auditor
-    }
-    console.log(audit11);
-    this.dealerService.createAuditor(this.Dealer1.dealerCode,audit11).subscribe(data=>{
+    // }
+    // const audit11={
+    //   "audit":audit,
+    //   "AuditorWorkAllocation":this.auditor
+    // }
+    console.log(this.Dealer2);
+    this.dealerService.createAuditor(this.Dealer2).subscribe(data=>{
       console.log(data);
       
     })
-    
-
-
-
   }
   dummy(){
     
@@ -442,6 +440,39 @@ export interface PeriodicElement {
   weight: string;
   symbol: string;
 }
+
+export class AuditorWorkAllocation {
+  userId!: number;
+  firstName!: string;
+  lastName!: string;
+  percentage!: number;
+}
+
+export class CreateAuditDto {
+  auditorWorkAllocation!: AuditorWorkAllocation[];
+  addressLine1!: string;
+  addressLine2!: string;
+  auditType!: string;
+  businessCenter!: number;
+  city!: string;
+  comments!: string;
+  country!: string;
+  dateAssigned!: Date;
+  dealerCode!: number;
+  dealerCompanyName!: string;
+  dealerName!: string;
+  email!: string;
+  inceptionDate!: Date;
+  noOfMonthsData!: string;
+  phoneNumber!: string;
+  reasonAuditSelected!: string;
+  reportLanguage!: string;
+  saleGroupSize!: number;
+  state!: string;
+  stateLegalLimitation!: string;
+  zicode!: string;
+}
+
 
 
 
