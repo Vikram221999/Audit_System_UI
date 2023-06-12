@@ -36,10 +36,10 @@ import { CreateAuditDto } from "./dealer-audit-system/dealer-audit-system.compon
     setAuditor(user: any) {
       return this.user.next(user);
     }
-    private baseURL:string = 'http://172.16.2.102:9091/dealer/';
+    private baseURL:string = 'http://localhost:9091/dealer/';
 
-    private baseURL1:string = 'http://172.16.2.102:9091/auditor/';
-    private baseURL2:string = 'http://172.16.2.102:9091/audit/';
+    private baseURL1:string = 'http://localhost:9091/auditor/';
+    private baseURL2:string = 'http://localhost:9091/audit/';
     // [x: string]: any;
     getDealers(): Observable<Dealer[]> {
       return this.httpClient.get<Dealer[]>(this.baseURL + "/showAllDealer");
