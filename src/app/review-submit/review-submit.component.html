@@ -1,78 +1,147 @@
-<ng-container style="background-color: rgb(231, 215, 247);">
-<form>
-  <table>
-    <div style="background-color: rgb(242, 237, 247);" class="row">
-      <div style="background-color:  rgb(242, 237, 247);" class="col">
-        <mat-card class="container1">
-          <h4 style="color: rgb(6, 194, 252);"><b>DEALER INFORMATION</b></h4>
+<link
+href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet"
+>
 
-          <div style="padding-left: 10%">
-            
-            <br />
-            <span
-              >{{ Dealer.businessCenter }} -
-              {{ Dealer.dealerCompanyName }}</span
-            >
-            <br />
-            <br />
-            <span> BusinessCenter - {{ Dealer.businessCenter }}</span>
-            <br />
-            <br />
-            <span>{{ Dealer.dealerName }} ({{ Dealer.dealerName }})</span>
-            <br />
-            <br />
-            <br />
-            <span>{{ Dealer.addressLine1 }} {{ Dealer.addressLine2 }} </span>
-            <br />
-            <br />
-            <span>{{ Dealer.city }} ({{ Dealer.state }})</span>
-            <br />
-            <br />
-            <span>{{ Dealer.country }} ({{ Dealer.zicode }})</span>
-            <br />
-            <br />
-            <span>{{ Dealer.phoneNumber }} </span>
-            <br />
-            <br />
-            <span>{{ Dealer.email }}</span>
-          </div>
-        </mat-card>
+<ng-container style="background-color: rgb(231, 215, 247)">
+  <form>
+    <table>
+      <div style="background-color: rgb(242, 237, 247)" class="row">
+        <div style="background-color: rgb(242, 237, 247)" class="col">
+          <mat-card class="container1">
+            <h4 style="color: rgb(6, 92, 252)"><b>DEALER INFORMATION</b></h4>
+
+            <div>
+              <div class="column1" >
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                  
+                </div>
+                <br/>
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                
+                </div>
+                <br/>
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                👤
+                </div>
+                <br/>
+                
+                <div
+                class="row ">
+                <img src="./assets/house.png" style="margin-left: 20%; width: 60%;height: 60%;">
+              </div>
+                <br/>
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                &nbsp;
+                </div>
+                <br/>
+                <div
+                class="row text-end"
+                style="padding-left: 50%"
+              >
+              &nbsp;
+                
+              </div>
+              <br/>
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                ☎
+                </div>
+                <br/>
+                <div
+                  class="row text-end"
+                  style="padding-left: 50%"
+                >
+                ✉
+                </div>
+                <br/>
+              </div>
+              <div class="column" >
+                <div class="row"  >
+                  BusinessCenter
+                </div>
+                <br/>
+
+                <div class="row"  >
+                   {{ Dealer.dealerName }} ( {{ Dealer.dealerName }} )
+                </div>
+                <br/>
+                <div class="row"  >
+                  {{ Dealer.addressLine1 }} {{ Dealer.addressLine2 }}
+                </div>
+                <br/>
+                <div class="row"  >
+                  {{ Dealer.city }} ( {{ Dealer.state }} )
+                </div>
+                <br/>
+                <div class="row"  >
+                  {{ Dealer.country }} ( {{ Dealer.zicode }})
+                </div>
+                <br/>
+                <div class="row"  >
+                  {{ Dealer.phoneNumber }}
+                </div>
+                <br/>
+                <div class="row"  >
+                  {{ Dealer.email }}
+                </div>
+                <br/>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="col">
+          <mat-card class="container2">
+            <h4 style="color: rgb(6, 92, 252)"><b>AUDIT INFORMATION</b></h4>
+            <div style="padding-left: 10%">
+              <mat-icon style="padding-top: 5px">calendar_today</mat-icon>
+              <span
+                >{{ Dealer.auditType }} - {{ Dealer.reasonAuditSelected }}</span
+              >
+              <br />
+              <!-- <span> BusinessCenter - {{Dealer.businessCenter}}</span> -->
+              <br />
+              <span>
+                {{ Dealer.dateAssigned | date : dateAssignedFormat }}
+              </span>
+              <br />
+              <br />
+              <br />
+              <span>{{ Dealer.reportLanguage }} </span>
+            </div>
+          </mat-card>
+          <mat-card class="container3">
+            <h4 style="color: rgb(6, 92, 252)"><b>ASSIGNED AUDITORS</b></h4>
+
+            <div style="padding-left: 10%">
+              <ul>
+                <li *ngFor="let person of auditor">
+                  👤 {{ person.percentage }}% - {{ person.firstName }} ,{{
+                    person.lastName
+                  }}
+                  <br />
+                  <br />
+                </li>
+              </ul>
+            </div>
+          </mat-card>
+        </div>
       </div>
-
-      <div class="col">
-        <mat-card class="container2">
-          <h4 style="color: rgb(6, 194, 252);"><b>AUDIT INFORMATION</b></h4>
-          <div style="padding-left: 10%">
-            <span
-              >{{ Dealer.auditType }} - {{ Dealer.reasonAuditSelected }}</span
-            >
-            <br />
-            <!-- <span> BusinessCenter - {{Dealer.businessCenter}}</span> -->
-            <br />
-            <span>{{ Dealer.dateAssigned | date : dateAssignedFormat }} </span>
-            <br />
-            <br />
-            <br />
-            <span>{{ Dealer.reportLanguage }} </span>
-          </div>
-        </mat-card>
-        <mat-card class="container3">
-          <h4 style="color: rgb(6, 194, 252);"><b>ASSIGNED AUDITORS</b></h4>
-
-          <div style="padding-left: 10%">
-            <ul>
-              <li *ngFor="let person of auditor">
-                {{ person.percentage }}% - {{ person.firstName }} ,{{
-                  person.lastName
-                }}
-                <br />
-                <br />
-              </li>
-            </ul>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-  </table>
-</form>
+    </table>
+  </form>
 </ng-container>

@@ -20,6 +20,7 @@ import { AddAuditorComponent } from './add-auditor/add-auditor.component';
 import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
 import { ReviewSubmitComponent } from './review-submit/review-submit.component';
 import { MatTableModule } from '@angular/material/table';
+import { PracticeComponent } from './practice/practice.component';
 
 
 
@@ -37,6 +38,7 @@ import { MatTableModule } from '@angular/material/table';
 
     SearchDealerCodePipe,
       ReviewSubmitComponent,
+      PracticeComponent,
 
     
   ],
@@ -53,7 +55,8 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule  ,
-    MatTableModule   
+    MatTableModule ,
+     
 
   ],
   providers: [FormBuilder

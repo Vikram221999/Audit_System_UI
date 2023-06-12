@@ -4,7 +4,8 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import url('https://fonts.googleapis.com/css?family=Graphik-Bold&display=swap');
-
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~bootstrap/dist/css/bootstrap.css";
 
 ::ng-deep .custom-toolbar {
   background-color: #3782f3;
