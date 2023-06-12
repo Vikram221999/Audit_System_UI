@@ -6,6 +6,7 @@ import { Audit } from "./entity/audit";
 
 import { BehaviorSubject } from 'rxjs';
 import { User } from "./entity/user";
+import { CreateAuditDto } from "./dealer-audit-system/dealer-audit-system.component";
 @Injectable({
     providedIn: 'root'
   })
@@ -38,6 +39,9 @@ import { User } from "./entity/user";
     private baseURL:string = 'http://localhost:9091/dealer/';
 
     private baseURL1:string = 'http://localhost:9091/auditor/';
+
+    private baseURL2:string = 'http://localhost:9091/audit/';
+
     // [x: string]: any;
     getDealers(): Observable<Dealer[]> {
       return this.httpClient.get<Dealer[]>(this.baseURL + "/showAllDealer");
@@ -50,6 +54,11 @@ import { User } from "./entity/user";
     getAuditors(): Observable<any[]> {
       return this.httpClient.get<any[]>(this.baseURL1 + "/showAllAuditors");
     }
+
+   
+    createAuditor(data : CreateAuditDto): Observable < any > {
+      return this.httpClient.post<any>(this.baseURL2 + "/saveAudit", data);
+  }
    
    constructor(private httpClient: HttpClient) { }
 

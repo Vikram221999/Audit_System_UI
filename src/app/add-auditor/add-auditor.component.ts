@@ -40,6 +40,8 @@ export class AddAuditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup();
+
+    
   }
   formGroup() {
     this.projectForm = this._formBuilder.group({
@@ -51,33 +53,12 @@ export class AddAuditorComponent implements OnInit {
       this.projectForm.addControl('percentage_' + i, new FormControl(null));
     }
   }
-  // handlePercentage(person: User, index: number) {
-  //   const percentage = this.projectForm.get('percentage').value;
-  //   const dummy = {
-  //     "userId": person.userId,
-  //     "firstName": person.firstName,
-  //     "percentage": percentage,
-  //   };
-  //   this.dealerService.setAuditor(person);
-  //   this.temp.push(dummy);
-  //   console.log(this.temp);
-  //   this.projectForm.get('percentage').reset(); // Reset the percentage control
-  //   const sum = this.temp.reduce((accumulator, currentValue) => accumulator + currentValue.percentage, 0);
-  //   console.log('Total Percentage:', sum);
-  //   if (sum === 100) {
-  //     // Perform necessary actions when the sum is 100
-  //   } else {
-  //     console.warn(23234);
-  //   }
-  // }
-
+  
   handlePercentage(person: User, index: number) {
-    // if(this.temp.length<=2){
-
+  
     const percentage = this.projectForm.get('percentage').value;
 
     this.temp.splice(index, 1);
-
     const dummy = {
       userId: person.userId,
       firstName: person.firstName,
@@ -85,7 +66,9 @@ export class AddAuditorComponent implements OnInit {
       percentage: percentage,
     };
     this.dealerService.setAuditor(person);
+    // if(this.users.includes(person)){ 
     this.abc.push(person);
+  // }
     this.temp.push(dummy);
     console.log(this.temp);
     this.projectForm.get('percentage').value = 0;
@@ -147,7 +130,38 @@ this.dealerService.setAuditor(this.temp);
   //     });
 
   //   }
+  openDialogs(index: number ,person: any): void {
+    // this.abc = this.abc.filter(user => !this.users.includes(user));
+    if (this.users.length >= 2) {
+      this.users.splice(index, 1);
+    }
+    const dialogRef = this.dialog.open(SelectAuditorComponent, {
+      data: this.abc, // Pass a copy of abc array
+      width: '90%',
+      height: '90%',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(result);
+        this.users.push(result);
+        this.userName = result.firstName;
+        const indexToRemove = this.abc.findIndex(
+          (item) => item.userId === result.userId
+        );
+        if (indexToRemove !== -1) {
+          this.abc.splice(indexToRemove, 1);
+          // console.log(45689+'jhgjh');
+          
+        }
+      } else {
+       
+        console.warn(45689+'jhgjh');
+      }
+    });
+  }
   openDialog(index: number): void {
+    
     if (this.users.length >= 2) {
       this.users.splice(index, 1);
     }
@@ -177,20 +191,4 @@ this.dealerService.setAuditor(this.temp);
     });
   }
 
-  // dummy(person: any, index: number): void {
-  //   const percentage = this.projectForm.get('percentage')?.value;
-  //   if (percentage !== null && percentage !== '') {
-  //     const firstName = person.firstName;
-  //     console.log(index);
-  //     console.log(firstName);
-  //     console.log(percentage);
-  //     const dummy = {
-  //       firstName: firstName,
-  //       percentage: percentage,
-  //     };
-  //     this.temp.push(dummy);
-
-  //     console.log(this.temp);
-  //   }
-  // }
 }

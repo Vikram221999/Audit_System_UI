@@ -7,6 +7,12 @@
 
   
 }
+.example-container1 {
+  width: auto;
+  height: 650px;
+
+  
+}
 
 .example-sidenav-content {
   display: flex;
@@ -65,6 +71,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
+  border-color: #3782f3;
   border-color: #3782f3;
 }
 
@@ -164,7 +171,7 @@ td {
   height: 48px;
   background-color: rgb(255, 255, 255);
    padding-bottom: 10px;
-   border-bottom: #3d4f99;
+   border-bottom: #3782f3;
 }
 
 .container1,.container1-h4 {
@@ -174,7 +181,7 @@ td {
   margin: 14px;
   box-sizing: border-box;
   font-size: larger;
-  color: #3d4f99;
+  color: #3782f3;
 }
 
 .container2, .container2-h4{
@@ -184,7 +191,7 @@ td {
   margin: 14px;
   box-sizing: border-box;
   font-size: larger;
-  color: #3d4f99;
+  color: #3782f3;
 }
 .container3, .container3-h4{
   width: 550px; /* Set the desired width of the container */
@@ -193,7 +200,7 @@ td {
   margin: 14px;
   box-sizing: border-box;
   font-size: larger;
-  color: #3d4f99;
+  color: #3782f3;
 }
 
 
@@ -245,4 +252,76 @@ input {
 .custom-toolbar {
   background-color: #3782f3;
   color: #ffffff;
+}
+
+
+.example-stepper .mat-step-header {
+  background-color: #3782f3; /* Replace with your desired color */
+}
+
+.example-stepper .mat-step-header.mat-step-header-selected {
+  background-color: #3782f3; /* Replace with your desired color */
+}
+/* Side navigation container */
+
+
+/* Side navigation content */
+.side-nav-content {
+  width: 320px;
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: left; /* Align content to the right */
+}
+
+.side-nav-content h4 {
+  margin-bottom: 10px;
+  font-size: x-large;
+  font-weight: 700;
+}
+
+.side-nav-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-nav-content li {
+  margin-bottom: 15px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.side-nav-content a {
+  text-decoration: none;
+  color: #333;
+}
+
+.side-nav-content a:hover {
+  color: #555;
+}
+
+
+.mat-drawer-inner-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.mat-elevation-z4{
+  cursor: pointer;
 }

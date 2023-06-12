@@ -2,7 +2,7 @@ import { Dealer } from './../entity/dealer';
 import { DealerService } from './../dealer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_LOCALE, ThemePalette,   } from '@angular/material/core';
 
 
 import {
@@ -15,8 +15,12 @@ import {
 import {
   FormBuilder,
   FormControl,
+  FormGroup,
+ 
   UntypedFormBuilder,
   UntypedFormGroup,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -29,6 +33,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectAuditorComponent } from '../select-auditor/select-auditor.component';
 import { User } from '../entity/user';
 import { DatePipe } from '@angular/common';
+import { Audit } from '../entity/audit';
 @Injectable({
   providedIn: 'root',
   // providedIn:FormBuilder
@@ -42,6 +47,8 @@ import { DatePipe } from '@angular/common';
 export class DealerAuditSystemComponent implements AfterViewInit {
   filteredItems: string[] = [];
   searchTerm: string = '';
+  bool=true;
+  audit!:any;
 
 [x: string]: any;
 
@@ -49,7 +56,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   value!: string;
   viewValue!: string;
   Dealer!: any;
-  projectForm: any;
+  projectForm1: any;
+  projectForm2: any;
   assignAuditor:any;
   language: String[] = ['English', 'Tamil', 'Hindi'];
    dealerId!: number;
@@ -65,7 +73,11 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     'state',
   ];
 
-  dealerId1 !: any ;
+
+  Dealer1: any;
+  Dealer2!: CreateAuditDto;
+  auditor!: AuditorWorkAllocation[] ;
+  dealerId1 : any ;
   // =this.dealerService.getDealerId();
 
   
@@ -74,7 +86,8 @@ export class DealerAuditSystemComponent implements AfterViewInit {
   })
 
 
-  
+
+  minDate!: Date;
   dataSource!: MatTableDataSource<Dealer>;
   searchName!:string;
   dateAssignedControl = new FormControl();
@@ -88,10 +101,14 @@ export class DealerAuditSystemComponent implements AfterViewInit {
     private router: Router,
     private dialog: MatDialog,
     private route:ActivatedRoute,
-    
+  
+   
+    private datepipe:DatePipe
+
   ) 
   
   {
+   
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
@@ -114,6 +131,7 @@ export class DealerAuditSystemComponent implements AfterViewInit {
    this.dataSource.sort = this.sort;
     
  
+    console.warn(this.firstFormGroup.valid)
   }
 
 // applyFilter(event: any): void {
@@ -182,7 +200,7 @@ applyFilter(event: Event, columnName: string): void {
   }
 
   formGroup() {
-    this.projectForm = this._formBuilder.group({
+    this.projectForm1 = this._formBuilder.group({
       dealerCode: ['', Validators.required],
       dealerName: ['', Validators.required],
       businessCenter: ['', Validators.required],
@@ -199,6 +217,10 @@ applyFilter(event: Event, columnName: string): void {
       zicode: ['', Validators.required],
       email: ['', Validators.required],
 
+      
+    });
+
+    this.projectForm2 = this._formBuilder.group({
       auditType: ['', Validators.required],
       dateAssigned: ['', Validators.required],  
       reasonAuditSelected: ['', Validators.required], 
@@ -206,36 +228,39 @@ applyFilter(event: Event, columnName: string): void {
       stateLegalLimitation:['',Validators.required],
       noOfMonthsData: ['', Validators.required],
       comments: ['', Validators.required],
-    });
+
+    })
 
    
   }
 
-  formDetails() {
+  async formDetails(stepper:MatStepper) {
     const updateAssignment = {
       "dealerCode": this.Dealer.dealerCode,
-      "dealerName": this.projectForm.value.dealerName,
-      "businessCenter": this.projectForm.value.businessCenter,
-      "dealerCompanyName": this.projectForm.value.dealerCompanyName,
-      "saleGroupSize": this.projectForm.value.saleGroupSize,
+      "dealerName": this.projectForm1.value.dealerName,
+      "businessCenter": this.projectForm1.value.businessCenter,
+      "dealerCompanyName": this.projectForm1.value.dealerCompanyName,
+      "saleGroupSize": this.projectForm1.value.saleGroupSize,
+      "phoneNumber": this.projectForm1.value.phoneNumber,
+      "addressLine1": this.projectForm1.value.addressLine1,
+      "addressLine2":this.projectForm1.value.country ,
+      "inceptionDate":this.projectForm1.value.inceptionDate ,
+      "state": this.projectForm1.value.state ,
+      "country": this.projectForm1.value.country,
+      "city": this.projectForm1.value.city,
+      "zicode": this.projectForm1.value.zicode,
+      "email": this.projectForm1.value.email,
+      "dateAssigned": this.projectForm2.value.dateAssigned,
+      "reasonAuditSelected": this.projectForm2.value.reasonAuditSelected,
+     "auditType": this.projectForm2.value.auditType,
+      "reportLanguage": this.projectForm2.value.reportLanguage,
+      "stateLegalLimitation": this.projectForm2.value.stateLegalLimitation,
+      "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+      "comments": this.projectForm2.value.comments,
       
-      "phoneNumber": this.projectForm.value.phoneNumber,
-      "addressLine1": this.projectForm.value.addressLine1,
-      "addressLine2":this.projectForm.value.country ,
-      "inceptionDate":this.projectForm.value.inceptionDate ,
-      "state": this.projectForm.value.state ,
-      "country": this.projectForm.value.country,
-      "city": this.projectForm.value.city,
-      "zicode": this.projectForm.value.zicode,
-      "email": this.projectForm.value.email,
-      "dateAssigned": this.projectForm.value.dateAssigned,
-      "reasonAuditSelected": this.projectForm.value.reasonAuditSelected,
-     "auditType": this.projectForm.value.auditType,
-      "reportLanguage": this.projectForm.value.reportLanguage,
-      "stateLegalLimitation": this.projectForm.value.stateLegalLimitation,
-      "noOfMonthsData": this.projectForm.value.noOfMonthsData,
-      "comments": this.projectForm.value.comments,
     }
+    this.onRowClicked1(stepper)
+    // await new Promise(resolve => setTimeout(resolve, 250)); 
     console.log(updateAssignment)
     this.dealerService.setReviewSubmit(updateAssignment);
     // this.service.updateProjectAssignment(updateAssignment).subscribe((data) => {
@@ -243,6 +268,9 @@ applyFilter(event: Event, columnName: string): void {
     //    this.tsmAlertService.showSuccess("Project Assignment Updated");
     //    this.router.navigate(['./userlist/edituser']);
     //  });
+    await new Promise(resolve => setTimeout(resolve, 250)); 
+    this.bool=false;
+
   }
   getSingleDealer() {
     this.dealerService.getSingleDealer(this.dealerId).subscribe((data) => {
@@ -250,39 +278,40 @@ applyFilter(event: Event, columnName: string): void {
      // console.log(this.Dealer);
       
      // console.log(this.Dealer.address.email);
-      this.projectForm.controls['dealerCode'].setValue(data.dealerCode);
-      this.projectForm.controls['dealerName'].setValue(data.dealerName);
-      this.projectForm.controls['businessCenter'].setValue(data.businessCenter);
-      this.projectForm.controls['dealerCompanyName'].setValue(data.dealerCompanyName);
-      this.projectForm.controls['saleGroupSize'].setValue(data.saleGroupSize);
-      this.projectForm.controls['phoneNumber'].setValue(
+      this.projectForm1.controls['dealerCode'].setValue(data.dealerCode);
+      this.projectForm1.controls['dealerName'].setValue(data.dealerName);
+      this.projectForm1.controls['businessCenter'].setValue(data.businessCenter);
+      this.projectForm1.controls['dealerCompanyName'].setValue(data.dealerCompanyName);
+      this.projectForm1.controls['saleGroupSize'].setValue(data.saleGroupSize);
+      this.projectForm1.controls['phoneNumber'].setValue(
         data.address.phoneNumber
       );
-      this.projectForm.controls['addressLine1'].setValue(
+      this.projectForm1.controls['addressLine1'].setValue(
         data.address.addressLine1
       );
-      this.projectForm.controls['addressLine2'].setValue(
+      this.projectForm1.controls['addressLine2'].setValue(
         data.address.addressLine2
       );
-      this.projectForm.controls['state'].setValue(data.address.state);
-      this.projectForm.controls['country'].setValue(data.address.country);
-      this.projectForm.controls['city'].setValue(data.address.city);
-      this.projectForm.controls['zicode'].setValue(data.address.zicode);
-      this.projectForm.controls['email'].setValue(data.address.email);
+      this.projectForm1.controls['state'].setValue(data.address.state);
+      this.projectForm1.controls['country'].setValue(data.address.country);
+      this.projectForm1.controls['city'].setValue(data.address.city);
+      this.projectForm1.controls['zicode'].setValue(data.address.zicode);
+      this.projectForm1.controls['email'].setValue(data.address.email);
     });
   }
 
   ngAfterViewInit() {}
 
 
-  reviewsubmit(){
-    this.formDetails();
+  reviewsubmit(stepper:MatStepper){
+    this.formDetails(stepper);
     this.dealerService.setDealerId(this.dealerId);
   }
 
-
-  onRowClicked(row: any, stepper: MatStepper) {
+  async onRowClicked(row: any, stepper: MatStepper) {
     //console.log('Row clicked: ', row);
+    this.bool=false
+    await new Promise(resolve => setTimeout(resolve, 250)); 
     this.dealerId = row.dealerCode;
     console.log(this.dealerId);
     stepper.next();
@@ -290,14 +319,14 @@ applyFilter(event: Event, columnName: string): void {
     //this.dealerId1.next(this.dealerId);
     
     this.getSingleDealer();
-
+    this.bool=true
   }
+
   openDialog(): void {
    
     const dialogRef = this.dialog.open(SelectAuditorComponent, {
       width: '90%',
       height: '90%',
-
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -305,6 +334,7 @@ applyFilter(event: Event, columnName: string): void {
     });
    
   }
+
 
   goToNextStep(stepper: MatStepper): void {
     stepper.next();
@@ -333,6 +363,73 @@ applyFilter(event: Event, columnName: string): void {
     return "no user"
   }
   }
+
+  onSubmit(){
+    this.dealerService.getReviewSubmit().subscribe((data)=>
+    {
+    this.Dealer1=data;
+console.log(this.Dealer1);
+    });
+    this.dealerService.getAuditor().subscribe((data)=>
+    {
+    this.auditor=data;
+console.log(this.auditor);
+    });
+
+    this.Dealer2={
+      "dealerCode": this.Dealer.dealerCode,
+      "dealerName": this.projectForm1.value.dealerName,
+      "businessCenter": this.projectForm1.value.businessCenter,
+      "dealerCompanyName": this.projectForm1.value.dealerCompanyName,
+      "saleGroupSize": this.projectForm1.value.saleGroupSize,
+      "phoneNumber": this.projectForm1.value.phoneNumber,
+      "addressLine1": this.projectForm1.value.addressLine1,
+      "addressLine2":this.projectForm1.value.country ,
+      "inceptionDate":this.projectForm1.value.inceptionDate ,
+      "state": this.projectForm1.value.state ,
+      "country": this.projectForm1.value.country,
+      "city": this.projectForm1.value.city,
+      "zicode": this.projectForm1.value.zicode,
+      "email": this.projectForm1.value.email,
+      "dateAssigned": this.projectForm2.value.dateAssigned,
+      "reasonAuditSelected": this.projectForm2.value.reasonAuditSelected,
+     "auditType": this.projectForm2.value.auditType,
+      "reportLanguage": this.projectForm2.value.reportLanguage,
+      "stateLegalLimitation": this.projectForm2.value.stateLegalLimitation,
+      "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+      "comments": this.projectForm2.value.comments,
+      
+      "auditorWorkAllocation":this.auditor
+    }
+
+    // const audit ={
+    //   "dateAssigned": this.datepipe.transform( this.projectForm2.value.dateAssigned,"yyyy-MM-dd"),
+    //  "auditType": this.projectForm2.value.auditType,
+    //   "noOfMonthsData": this.projectForm2.value.noOfMonthsData,
+    //   "comments": this.projectForm2.value.comments,
+      
+    // }
+    // const audit11={
+    //   "audit":audit,
+    //   "AuditorWorkAllocation":this.auditor
+    // }
+    console.log(this.Dealer2);
+    this.dealerService.createAuditor(this.Dealer2).subscribe(data=>{
+      console.log(data);
+      
+    })
+  }
+  dummy(){
+    
+  }
+  async onRowClicked1( stepper: MatStepper){
+    this.bool=false
+    await new Promise(resolve => setTimeout(resolve, 250)); 
+    console.log(this.dealerId);
+    stepper.next(); 
+    //this.dealerId1.next(this.dealerId);
+    this.bool=true
+  }
 }
 
 export interface PeriodicElement {
@@ -340,6 +437,38 @@ export interface PeriodicElement {
   position: number;
   weight: string;
   symbol: string;
+}
+
+export class AuditorWorkAllocation {
+  userId!: number;
+  firstName!: string;
+  lastName!: string;
+  percentage!: number;
+}
+
+export class CreateAuditDto {
+  auditorWorkAllocation!: AuditorWorkAllocation[];
+  addressLine1!: string;
+  addressLine2!: string;
+  auditType!: string;
+  businessCenter!: number;
+  city!: string;
+  comments!: string;
+  country!: string;
+  dateAssigned!: Date;
+  dealerCode!: number;
+  dealerCompanyName!: string;
+  dealerName!: string;
+  email!: string;
+  inceptionDate!: Date;
+  noOfMonthsData!: string;
+  phoneNumber!: string;
+  reasonAuditSelected!: string;
+  reportLanguage!: string;
+  saleGroupSize!: number;
+  state!: string;
+  stateLegalLimitation!: string;
+  zicode!: string;
 }
 
 

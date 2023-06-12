@@ -4,7 +4,8 @@ rel="stylesheet"
 >
 
 <ng-container style="background-color: rgb(231, 215, 247)">
-  <form>
+  
+<form>
     <table>
       <div style="background-color: rgb(242, 237, 247)" class="row">
         <div style="background-color: rgb(242, 237, 247)" class="col">
@@ -128,20 +129,22 @@ rel="stylesheet"
           <mat-card class="container3">
             <h4 style="color: rgb(6, 92, 252)"><b>ASSIGNED AUDITORS</b></h4>
 
-            <div style="padding-left: 10%">
-              <ul>
-                <li *ngFor="let person of auditor">
-                  👤 {{ person.percentage }}% - {{ person.firstName }} ,{{
-                    person.lastName
-                  }}
-                  <br />
-                  <br />
-                </li>
-              </ul>
-            </div>
-          </mat-card>
-        </div>
+          <div style="padding-left: 10%">
+            <ul>
+              <li *ngFor="let person of auditor">
+                {{ person.percentage }}% - {{ person.firstName }} ,{{
+                  person.lastName
+                }}
+                <br />
+                <br />
+              </li>
+            </ul>
+          </div>
+        </mat-card>
       </div>
-    </table>
-  </form>
-</ng-container>
+    </div>
+  </table>
+</form>
+
+
+   </ng-container>

@@ -7,6 +7,7 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 
+
 ::ng-deep .custom-toolbar {
   background-color: #3782f3;
   color: #ffffff;
@@ -70,7 +71,7 @@ html, body {
 
      
       .mat-toolbar {
-        height: 40px;
+        height: 45px;
       }
   
 
@@ -95,7 +96,7 @@ html, body {
   font-size: 14px;
   padding-bottom: 18px;
 color: #ffffff;
-padding: 10px;
+padding: 12px;
 text-align: left;
 border-bottom: 1px solid #ccc;
 }
