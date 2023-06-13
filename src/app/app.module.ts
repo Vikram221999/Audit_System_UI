@@ -12,18 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from 'src/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopNavbarComponent } from './navbars/top-navbar/top-navbar.component';
-import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SelectAuditorComponent } from './select-auditor/select-auditor.component';
-import { AddAuditorComponent } from './add-auditor/add-auditor.component';
-
-import { SearchDealerCodePipe } from './pipe/search-dealer-code.pipe';
-import { ReviewSubmitComponent } from './review-submit/review-submit.component';
-import { MatTableModule } from '@angular/material/table';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
-
-
-import { DatePipe } from '@angular/common';
 
 
 
@@ -34,14 +24,8 @@ import { DatePipe } from '@angular/common';
     AppComponent,
     DealerAuditSystemComponent,
     SideNavbarComponent,
-    TopNavbarComponent,
-    SelectAuditorComponent,
-
-    AddAuditorComponent,
-
-    SearchDealerCodePipe,
-      ReviewSubmitComponent,
-
+    TopNavbarComponent
+    
     
   ],
   imports: [
@@ -55,16 +39,12 @@ import { DatePipe } from '@angular/common';
     MaterialExampleModule,
     NgbModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule  ,
-    MatTableModule   ,
     
-
+    
+    
   ],
-  providers: [FormBuilder,
-    DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-US' }],
-  bootstrap: [AppComponent],
-  
+  providers: [FormBuilder],
+  bootstrap: [AppComponent]
   
   
  
